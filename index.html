@@ -1,0 +1,332 @@
+<link rel="stylesheet" href="MeuSite/style.css">
+<script src="MeuSite/script.js"></script>
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Alisson H. Correia</title>
+    <style>
+        /* Estilos globais */
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fundo preto */
+            color: #fff; /* Texto branco */
+            font-family: 'Inter', 'Roboto', sans-serif; /* Fontes modernas */
+            height: 100%; /* Garante que o body ocupe 100% da altura da tela */
+            width: 100%; /* Garante que o body ocupe 100% da largura */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Previne barras de rolagem indesejadas */
+        }
+
+        /* Container principal */
+        .container {
+            display: flex;
+            width: 100vw; /* Ocupa 100% da largura da viewport */
+            height: 100vh; /* Ocupa 100% da altura da viewport */
+            background-color: #000; /* Fundo preto */
+            box-sizing: border-box; /* Inclui as bordas no cálculo de tamanho */
+        }
+
+        /* Estilos do menu lateral */
+        .sidebar {
+            width: 250px;
+            background-color: #1c1c1c; /* Cinza escuro */
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            box-shadow: 5px 0 10px rgba(0, 0, 0, 0.8); /* Sombra mais intensa */
+            height: 100%; /* Sidebar ocupando 100% da altura */
+        }
+
+        /* Estilos dos links e itens do menu */
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            color: #c1c1c1; /* Cor cinza clara */
+            transition: all 0.3s ease;
+        }
+
+        .sidebar ul li a, .sidebar ul li button {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 100%;
+            background: none;
+            border: none;
+            font-size: inherit;
+            cursor: pointer;
+        }
+
+        .sidebar ul li:hover {
+            transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
+            color: #00ccff; /* Azul fluorescente claro para hover */
+        }
+
+        /* Estilo dos botões no menu */
+        .sidebar ul li button:hover {
+            color: #00ccff; /* Azul fluorescente claro para hover */
+        }
+
+        /* Estilo da área de conteúdo */
+        .content {
+            padding-left: 20px;
+            flex: 1;
+            padding-top: 20px;
+            background-color: #000; /* Fundo preto */
+            overflow-y: auto; /* Ativa rolagem vertical para conteúdo longo */
+            height: 100%; /* Área de conteúdo ocupando 100% da altura */
+        }
+
+        /* Título e texto das seções */
+        h1 {
+            color: #fff; /* H1 em branco */
+        }
+
+        h2 {
+            color: #ff4081; /* Rosa fluorescente */
+        }
+
+        p {
+            color: #c1c1c1; /* Cinza claro */
+        }
+
+        /* Estilos de informações de contato */
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .contact-info a {
+            color: #00ccff; /* Azul fluorescente claro para links */
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Ajustes para seções específicas */
+        #experiencias-opcoes,
+        #projetos-opcoes {
+            display: none;
+            margin-left: 20px;
+        }
+
+        /* Estilos para as opções dentro dos menus suspensos */
+        .empresa-item, .projeto-item {
+            cursor: pointer;
+            color: #c1c1c1; /* Cor padrão das opções */
+            padding: 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        /* Estilo hover para as opções do menu suspenso */
+        .empresa-item:hover, .projeto-item:hover {
+            color: #00ccff; /* Cor ao passar o mouse: azul fluorescente */
+        }
+
+        /* Estilo da opção selecionada */
+        .selected {
+            color: #00ccff; /* Azul fluorescente quando a opção está selecionada */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Menu lateral -->
+        <div class="sidebar">
+            <ul>
+                <li><a href="javascript:void(0);" onclick="showInfo('resumo', true)">Resumo</a></li>
+                <li><a href="javascript:void(0);" onclick="showInfo('objetivo', true)">Objetivo</a></li>
+                <li><a href="javascript:void(0);" onclick="showInfo('formacao', true)">Formação</a></li>
+                <li><a href="javascript:void(0);" onclick="showInfo('certificacoes', true)">Certificações</a></li>
+
+                <!-- Botão para alternar a visibilidade das empresas -->
+                <li><button onclick="toggleSection('experiencias-opcoes', 'projetos-opcoes')">Experiência Profissional</button></li>
+
+                <!-- Empresas ocultas inicialmente -->
+                <div id="experiencias-opcoes">
+                    <li class="empresa-item" onclick="selectOption(event); showInfo('contact2sale', false)">Contact2Sale</li>
+                    <li class="empresa-item" onclick="selectOption(event); showInfo('latam', false)">Latam Airlines</li>
+                    <li class="empresa-item" onclick="selectOption(event); showInfo('canaa', false)">Canaã Estacionamento</li>
+                </div>
+
+                <!-- Botão para alternar a visibilidade dos projetos -->
+                <li><button onclick="toggleSection('projetos-opcoes', 'experiencias-opcoes')">Projetos Realizados</button></li>
+
+                <!-- Projetos ocultos inicialmente -->
+                <div id="projetos-opcoes">
+                    <li class="projeto-item" onclick="selectOption(event); showInfo('software', false)">Projeto de Software</li>
+                    <li class="projeto-item" onclick="selectOption(event); showInfo('bd', false)">Projeto de Banco de Dados</li>
+                    <li class="projeto-item" onclick="selectOption(event); showInfo('web', false)">Desenvolvimento Web</li>
+                </div>
+            </ul>
+        </div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <h1>Alisson H. Correia</h1>
+            <div class="contact-info">
+                <p><strong>Telefone:</strong> (11) 99200-1638 / (11) 91481-6272</p>
+                <p><strong>Email:</strong> <a href="mailto:alissoncorreia31@gmail.com">alissoncorreia31@gmail.com</a></p>
+                <p><strong>Endereço:</strong> Jd Europa - Suzano - SP</p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/alisson-correia-039798244" target="_blank">linkedin.com/in/alisson-correia</a></p>
+                <p><strong>Estado Civil:</strong> Casado, 34 anos</p>
+            </div>
+
+            <!-- Seções de conteúdo -->
+            <section id="resumo">
+                <h2>Resumo</h2>
+                <p>
+                    Possuo experiência na área de Suporte ao Cliente, com foco em atendimento e resolução de problemas.<br><br>
+                    Além disso, tenho experiência em Melhoria Contínua de processos, buscando otimizar fluxos de trabalho e aumentar a eficiência.<br><br>
+                    Tenho conhecimento intermediário nas ferramentas Google Workspace e Microsoft 365, além de experiência com ferramentas de MCC.<br><br>
+                    Também possuo uma sólida base em lógica de programação e estrutura de código em Java, com conhecimentos em bancos de dados como MySQL e MongoDB.<br><br>
+                    Nível básico em automação de testes utilizando Selenium WebDriver, Selenium IDE e na plataforma de integração Make (Integromat).
+                </p>
+            </section>
+
+            <section id="objetivo">
+                <h2>Objetivo</h2>
+                <p>Analista de Tecnologia/Suporte e Sucesso do cliente</p>
+            </section>
+
+            <section id="formacao">
+                <h2>Formação</h2>
+                <p>
+                    Universidade Anhanguera<br><br>
+                    Bacharelado em Sistema de Informação (Cursando)<br><br>
+                    Início: 06/2022 Conclusão: 12/2025
+                </p>
+            </section>
+
+            <section id="certificacoes">
+                <h2>Certificações</h2>
+                <p>
+                    Curso de Algoritmos e Lógica da Programação - Udemy<br><br>
+                    Curso de Java - Udemy<br><br>
+                    Curso de automação com Selenium IDE/WebDriver - Udemy
+                </p>
+            </section>
+
+            <!-- Seções ocultas inicialmente -->
+            <section id="contact2sale" style="display:none;">
+                <h2>Contact2Sale</h2>
+                <p>Analista de Suporte (04/2023 - Atual)</p>
+                <p>Análise de solicitações e resolução de dúvidas e problemas dos clientes relacionados às configurações do APP e WebApp C2S.</p>
+                <p>Atendimento através de múltiplas plataformas: WhatsApp, OctaDesk, E-mail, Google Hangouts, MicroSip e Ndesk.</p>
+            </section>
+
+            <section id="latam" style="display:none;">
+                <h2>Latam Airlines</h4>
+                <h4>Analista de Melhoria Contínua (12/2022 - 03/2023)</h4>
+                <p>Análise e desenvolvimento de projetos voltados para a melhoria de processos, com base na filosofia Lean Manufacturing.</p>
+                <p>Aplicação de metodologias como A3, Gerenciamento Diário, Kanban, Gemba Walk, Takt Time, 5S e Diagrama de Ishikawa.</p>
+                <p>Execução de projetos utilizando Pacote Office e Google Workspace.</p>
+
+                <h4>Agente de bagagem e rampa (05/2015 - 10/2019)</h4>
+                <p>Realização de triagem, direcionamento, e operações de carga e descarga de bagagens em contêineres e aeronaves.</p>
+            </section>
+
+            <section id="canaa" style="display:none;">
+                <h2>Canaã Estacionamento</h2>
+                <h4>Operador de Estacionamento (03/2020 - 10/2021)</h4>
+                <p>Atendimento e orientação ao cliente, controle de caixa e monitoramento do acesso de veículos.</p>
+                <p>Utilização do sistema Prossiga para organização de cadastros e Excel para atualização e controle de dados.</p>
+            </section>
+
+            <!-- Seção de Projetos Realizados (inicialmente oculta) -->
+            <section id="software" style="display:none;">
+                <h2>Projeto de Software</h2>
+                <p>Desenvolvimento de um projeto usando ferramentas específicas, garantindo a satisfação e alinhando as expectativas do cliente.</p>
+                <a href="https://docs.google.com/document/d/19c2weVNj3146v0ggxkSkmRKbEAOOWcguiiPTDQ7UpVA/edit" target="_blank"><span>Acesse o portfólio</span></a>
+            </section>
+
+            <section id="bd" style="display:none;">
+                <h2>Projeto de Banco de Dados</h2>
+                <p>Detalhes do projeto de banco de dados...</p>
+            </section>
+
+            <section id="web" style="display:none;">
+                <h2>Desenvolvimento Web</h2>
+                <p>Desenvolvimento com Angular.JS</p>
+                <a href="https://docs.google.com/document/d/1MJC2IQTmaC2DhT4EZKFDiBg4Ngpwnvw9EVLJsWmMHJg/edit" target="_blank"><span>Acesse o portfólio</span></a>
+                <p>Desenvolvimento com Node.JS</p>
+                <a href="https://docs.google.com/document/d/17UoK3pEaC9O5D5-ztbhRDG9v0iVOHxTc4kyUgwEEjx0/edit" target="_blank"><span>Acesse o portfólio</span></a>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Função para alternar a visibilidade de seções
+        // Agora, fecha o menu que não está sendo clicado
+        function toggleSection(sectionIdToShow, sectionIdToHide) {
+            var sectionToShow = document.getElementById(sectionIdToShow);
+            var sectionToHide = document.getElementById(sectionIdToHide);
+            
+            // Mostrar o menu clicado
+            if (sectionToShow.style.display === "none" || sectionToShow.style.display === "") {
+                sectionToShow.style.display = "block";
+            } else {
+                sectionToShow.style.display = "none";
+            }
+
+            // Sempre fechar o menu oposto
+            sectionToHide.style.display = "none";
+        }
+
+        // Função para mostrar a informação da empresa, projeto ou seção geral
+        // O parâmetro closeMenus define se deve fechar os menus suspensos
+        function showInfo(infoId, closeMenus) {
+            // Oculta todas as seções de empresa, projetos e seções gerais
+            document.querySelectorAll('.content section').forEach(function(section) {
+                section.style.display = 'none';
+            });
+
+            // Se closeMenus for verdadeiro, fecha os menus suspensos
+            if (closeMenus) {
+                document.getElementById('experiencias-opcoes').style.display = 'none';
+                document.getElementById('projetos-opcoes').style.display = 'none';
+            }
+
+            // Exibe a seção clicada
+            document.getElementById(infoId).style.display = 'block';
+        }
+
+        // Função para destacar a opção selecionada
+        function selectOption(event) {
+            // Remove a classe 'selected' de todas as opções
+            document.querySelectorAll('.empresa-item, .projeto-item').forEach(function(item) {
+                item.classList.remove('selected');
+            });
+
+            // Adiciona a classe 'selected' na opção clicada
+            event.target.classList.add('selected');
+        }
+
+        // Função para ocultar todas as seções ao carregar a página
+        window.onload = function() {
+            // Oculta todas as seções
+            document.querySelectorAll('.content section').forEach(function(section) {
+                section.style.display = 'none';
+            });
+        };
+    </script>
+</body>
+</html>
