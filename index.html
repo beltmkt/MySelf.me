@@ -20,16 +20,17 @@
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        background-image: url("fundoDeTela2.png") ; /* Caminho da imagem de fundo */
-        background-size: cover; /* Faz a imagem cobrir toda a tela */
-}
-
+        background-image: url('fundoDeTela2.png'); /* Caminho da imagem de fundo */
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        position: relative;/* Faz a imagem cobrir toda a tela */
+        }
         /* Container principal */
         .container {
             display: flex;
             width: 100vw; /* Ocupa 100% da largura da viewport */
-            height: 100vh; /* Ocupa 100% da altura da viewport */
-            background-color: #000; /* Fundo preto */
+            height: 100vh; /* Ocupa 100% da altura da viewport */         
             box-sizing: border-box; /* Inclui as bordas no cálculo de tamanho */
         }
 
