@@ -95,24 +95,25 @@
             flex-wrap: nowrap;
         }
 
-        /* Círculo padrão */
+        /* Estilo dos círculos */
+        .circle-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         .circle {
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.2); /* Fundo dos círculos */
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
             cursor: pointer;
             transition: transform 0.3s ease;
             font-size: 14px;
             color: white;
             border: 2px solid rgba(255, 255, 255, 0.5);
-        }
-
-        /* Efeito ao passar o mouse nos círculos */
-        .circle:hover {
-            transform: scale(1.1);
         }
 
         /* Tamanhos dos círculos */
@@ -131,6 +132,27 @@
             block-size: 200px;
         }
 
+        /* Estilos para a imagem dentro dos círculos */
+        .circle img {
+            inline-size: 80%;
+            block-size: 80%;
+            object-fit: cover; /* Ajusta a imagem para cobrir o círculo */
+            border-radius: 50%;
+        }
+
+        /* Descrição embaixo dos círculos */
+        .description {
+            margin-top: 10px;
+            font-size: 14px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Efeito hover para os círculos */
+        .circle:hover {
+            transform: scale(1.1);
+        }
+
         /* Subcírculos */
         .sub-circle-container {
             display: none;
@@ -139,6 +161,14 @@
             gap: 15px;
             position: absolute;
             top: 70%;
+        }
+
+        /* Estilos dos subcírculos */
+        .sub-circle-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .sub-circle {
@@ -151,10 +181,15 @@
             align-items: center;
             cursor: pointer;
             transition: transform 0.3s ease;
-            text-align: center;
-            font-size: 12px;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            overflow: hidden;
+        }
+
+        /* Imagens nos subcírculos */
+        .sub-circle img {
+            inline-size: 80%;
+            block-size: 80%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .sub-circle:hover {
@@ -194,6 +229,7 @@
         .overlay.active {
             display: block;
         }
+
         a {
             color: blue; /* Cor do link normal */
             text-decoration: none; /* Remover sublinhado do link */
@@ -219,6 +255,7 @@
         a:active {
             color: green; /* Cor do link durante o clique */
         }
+
     </style>
 </head>
 <body>
@@ -232,25 +269,89 @@
     <!-- Segunda página com círculos alinhados -->
     <div class="flow-page" id="flowPage">
         <div class="circle-container">
-            <div class="circle small" onclick="toggleSubCircles('projetos-sub')">Projetos</div>
-            <div class="circle medium" onclick="toggleSubCircles('experiencia-sub')">Experiência</div>
-            <div class="circle large" onclick="closeSubCircles(); showPopup('dados-popup')">Dados Pessoais</div>
-            <div class="circle medium" onclick="closeSubCircles(); showPopup('resumo-popup')">Resumo</div>
-            <div class="circle small" onclick="closeSubCircles(); showPopup('objetivo-popup')">Objetivo</div>
+            <!-- Wrapper para cada círculo com sua descrição embaixo -->
+            <div class="circle-wrapper">
+                <div class="circle small" onclick="toggleSubCircles('projetos-sub')">
+                    <img src="projetos.png" alt="Projetos">
+                </div>
+                <div class="description">Projetos</div>
+            </div>
+
+            <div class="circle-wrapper">
+                <div class="circle medium" onclick="toggleSubCircles('experiencia-sub')">
+                    <img src="experiencia.png" alt="Experiência">
+                </div>
+                <div class="description">Experiência</div>
+            </div>
+
+            <div class="circle-wrapper">
+                <div class="circle large" onclick="closeSubCircles(); showPopup('dados-popup')">
+                    <img src="dados-pessoais.png" alt="Dados Pessoais">
+                </div>
+                <div class="description">Dados Pessoais</div>
+            </div>
+
+            <div class="circle-wrapper">
+                <div class="circle medium" onclick="closeSubCircles(); showPopup('resumo-popup')">
+                    <img src="resumo.png" alt="Resumo">
+                </div>
+                <div class="description">Resumo</div>
+            </div>
+
+            <div class="circle-wrapper">
+                <div class="circle small" onclick="closeSubCircles(); showPopup('objetivo-popup')">
+                    <img src="objetivo.png" alt="Objetivo">
+                </div>
+                <div class="description">Objetivo</div>
+            </div>
         </div>
 
         <!-- Subcírculos para Projetos -->
         <div class="sub-circle-container" id="projetos-sub">
-            <div class="sub-circle" onclick="showPopup('software-popup')">Software</div>
-            <div class="sub-circle" onclick="showPopup('bd-popup')">Banco de Dados</div>
-            <div class="sub-circle" onclick="showPopup('web-popup')">Web</div>
+            <div class="sub-circle-wrapper">
+                <div class="sub-circle" onclick="showPopup('software-popup')">
+                    <img src="software.png" alt="Software">
+                </div>
+                <div class="description">Software</div>
+            </div>
+
+            <div class="sub-circle-wrapper">
+                <div class="sub-circle" onclick="showPopup('bd-popup')">
+                    <img src="bd.png" alt="Banco de Dados">
+                </div>
+                <div class="description">Banco de Dados</div>
+            </div>
+
+            <div class="sub-circle-wrapper">
+                <div class="sub-circle" onclick="showPopup('web-popup')">
+                    <img src="web.png" alt="Web">
+                </div>
+                <div class="description">Web</div>
+            </div>
         </div>
 
         <!-- Subcírculos para Experiência -->
         <div class="sub-circle-container" id="experiencia-sub">
-            <div class="sub-circle" onclick="showPopup('contact2sale-popup')">Contact2Sale</div>
-            <div class="sub-circle" onclick="showPopup('latam-popup')">Latam</div>
-            <div class="sub-circle" onclick="showPopup('canaa-popup')">Canaã</div>
+            <div class="sub-circle-wrapper">
+                <div class="sub-circle" onclick="showPopup('contact2sale-popup')">
+                    <img src="contact2sale.png" alt="Contact2Sale">
+                </div>
+                <div class="description">Contact2Sale</div>
+            </div>
+
+            <div class="sub-circle-wrapper">
+                <div class="sub-circle" onclick="showPopup('latam-popup')">
+                    <img src="latam.png" alt="Latam Airlines">
+                </div>
+                <div class="description">Latam</div>
+            </div>
+
+            <div class="sub-circle-wrapper">
+                <div class="sub-circle" onclick="showPopup('canaa-popup')">
+                    <img src="canaa.png" alt="Canaã">
+                </div>
+                <div class="description">Canaã</div>
+            </div>
         </div>
     </div>
 
@@ -267,12 +368,11 @@
 
     <div class="popup" id="resumo-popup">
         <h2>Resumo</h2>
-        <p>
-            Tenho experiência em Suporte ao Cliente, focado no atendimento e resolução de problemas. 
-            Também atuei em Melhoria Contínua, otimizando fluxos de trabalho e eficiência. 
-            Tenho conhecimento intermediário em Google Workspace, Microsoft 365 e MCC. 
-            Possuo base sólida em lógica de programação, Java, HTML e CSS além de bancos de dados como MySQL e MongoDB. 
-            Nível básico em automação de testes com Selenium WebDriver, Selenium IDE e na plataforma Make (Integromat).
+        <p>Tenho experiência em Suporte ao Cliente, focado no atendimento e resolução de problemas. 
+           Também atuei em Melhoria Contínua, otimizando fluxos de trabalho e eficiência. 
+           Tenho conhecimento intermediário em Google Workspace, Microsoft 365 e MCC. 
+           Possuo base sólida em lógica de programação, Java, HTML e CSS além de bancos de dados como MySQL e MongoDB. 
+           Nível básico em automação de testes com Selenium WebDriver, Selenium IDE e na plataforma Make (Integromat).
         </p>
     </div>
 
@@ -293,15 +393,15 @@
         <h2>Latam Airlines</h2>
         <h4>Analista de Melhoria Contínua (12/2022 - 03/2023)</h4>
         <p>Análise e desenvolvimento de projetos voltados para a melhoria de processos, com base na filosofia Lean Manufacturing.
-        Aplicação de metodologias como A3, Gerenciamento Diário, Kanban, Gemba Walk, Takt Time, 5S e Diagrama de Ishikawa.
-        Execução de projetos utilizando Pacote Office e Google Workspace.</p>
+           Aplicação de metodologias como A3, Gerenciamento Diário, Kanban, Gemba Walk, Takt Time, 5S e Diagrama de Ishikawa.
+           Execução de projetos utilizando Pacote Office e Google Workspace.</p>
     </div>
 
     <div class="popup" id="canaa-popup">
-        <h2>Canaã Estacionamento</h2>
-        <h4>Operador de Estacionamento (03/2020 - 10/2021)</h4>
+        <h2>Canaã Estacionamento</h4>
+        <p>Operador de Estacionamento (03/2020 - 10/2021)</p>
         <p>Atendimento e orientação ao cliente, controle de caixa e monitoramento do acesso de veículos.
-        Utilização do sistema Prossiga para organização de cadastros e Excel para atualização e controle de dados.</p>
+           Utilização do sistema Prossiga para organização de cadastros e Excel para atualização e controle de dados.</p>
     </div>
 
     <!-- Popups para Projetos -->
