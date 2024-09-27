@@ -168,7 +168,7 @@
             inset-block-start: 50%;
             inset-inline-start: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparente */
+            background-color: rgba(121, 120, 120, 0.251); /* Semi-transparente */
             padding: 20px;
             border-radius: 10px;
             inline-size: 60%;
@@ -193,6 +193,31 @@
 
         .overlay.active {
             display: block;
+        }
+        a {
+            color: blue; /* Cor do link normal */
+            text-decoration: none; /* Remover sublinhado do link */
+        }
+
+        /* Alterar a cor quando o link for clicado */
+        a:visited {
+            color: purple; /* Cor do link já visitado */
+        }
+
+        /* Alterar a cor quando o link for focado (por teclado) */
+        a:focus {
+            color: orange; /* Cor ao focar no link */
+        }
+
+        /* Alterar a cor ao passar o mouse */
+        a:hover {
+            color: red; /* Cor do link ao passar o mouse */
+            text-decoration: underline; /* Adicionar sublinhado ao passar o mouse */
+        }
+
+        /* Alterar a cor quando o link estiver sendo clicado */
+        a:active {
+            color: green; /* Cor do link durante o clique */
         }
     </style>
 </head>
