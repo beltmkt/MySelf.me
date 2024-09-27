@@ -1,71 +1,108 @@
-<link rel="stylesheet" href="MeuSite/style.css">
-<script src="MeuSite/script.js"></script>
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currículo - Alisson H. Correia</title>
+
+    <!-- Link para o Google Fonts (fonte estilosa) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+
     <style>
         /* Estilos globais */
         html, body {
-        background-color: rgba(255, 255, 255, 0); /* Transparente */
-            
-        margin: 0;
-        padding: 0;
-        color: #ffffff; /* Texto branco */
-        font-family: 'Inter', 'Roboto', sans-serif;
-        block-size: 100%;
-        inline-size: 100%;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        background-color: rgba(255, 255, 255, 0);
-        background-image: url("fundoDeTela2.png"); /* Caminho da imagem de fundo */
-        background-size:cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        position: relative;/* Faz a imagem cobrir toda a tela */
-        }
-        /* Container principal */
-        .container {
-            display: flex;
-            width: 100vw; /* Ocupa 100% da largura da viewport */
-            height: 100vh; /* Ocupa 100% da altura da viewport */         
-            box-sizing: border-box; /* Inclui as bordas no cálculo de tamanho */
-        }
-        
-        #web a {
-        color: blue;
-        text-decoration: none;
-        }
-
-        #web a span {
-        color: inherit; /* Faz o <span> herdar a cor do link */
-        }
-
-        #web a:hover {
-        color: darkblue;
-        }
-
-        /* Estilos do menu lateral */
-        .sidebar {
-            width: 250px;            
+            background-color: rgba(255, 255, 255, 0); /* Transparente */
+            margin: 0;
+            padding: 0;
+            color: #ffffff; /* Texto branco */
+            font-family: 'Poppins', sans-serif; /* Fonte Poppins aplicada */
+            block-size: 100%;
+            inline-size: 100%;
             display: flex;
             flex-direction: column;
-            padding-top: 20px;
-            background-color: rgba(0, 0, 0, 0.5); 
-            /* box-shadow: 5px 0 10px rgba(0, 0, 0, 0.8); /* Sombra mais intensa */
-            height: 100%; /* Sidebar ocupando 100% da altura */
+            overflow: hidden;
+            background-image: url("fundoDeTela2.png"); /* Caminho da imagem de fundo */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
-        /* Estilos dos links e itens do menu */
+        /* Primeira página com o círculo central */
+        .initial-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            inline-size: 100vw; /* Largura da tela */
+            block-size: 100vh; /* Altura da tela */
+        }
+
+        /* Círculo central maior */
+        .circle-icon {
+            background-image: url("meulogo.png"); /* Caminho da imagem de fundo do círculo */
+            background-size: cover; /* Faz com que a imagem preencha o círculo */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
+            inline-size: 300px; /* Largura do círculo */
+            block-size: 300px; /* Altura do círculo */
+            border-radius: 50%; /* Faz o container ser redondo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        /* Efeito ao passar o mouse no círculo */
+        .circle-icon:hover {
+            transform: scale(1.1); /* Aumenta ligeiramente o círculo ao passar o mouse */
+        }
+
+        /* Botão abaixo do círculo */
+        .enter-button {
+            background-color: rgba(255, 255, 255, 0.2); /* Transparente com leve opacidade */
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        /* Efeito hover para o botão */
+        .enter-button:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Segunda página (conteúdo principal já existente) */
+        .container {
+            display: none; /* Ocultada inicialmente */
+            inline-size: 100vw;
+            block-size: 100vh;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+        }
+
+        /* Sidebar com flexbox */
+        .sidebar {
+            inline-size: 250px;
+            display: flex;
+            flex-direction: column;
+            padding-block-start: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            block-size: 100vh; /* Sidebar ocupando 100% da altura da tela */
+        }
+
+        /* Flex para empurrar o botão para o final */
         .sidebar ul {
             list-style: none;
             padding: 0;
             margin: 0;
+            flex-grow: 1; /* Ocupa o espaço disponível */
         }
 
         .sidebar ul li {
@@ -80,7 +117,7 @@
             text-decoration: none;
             color: inherit;
             display: block;
-            width: 100%;
+            inline-size: 100%;
             background: none;
             border: none;
             font-size: inherit;
@@ -92,18 +129,34 @@
             color: #00ccff; /* Azul fluorescente claro para hover */
         }
 
-        /* Estilo dos botões no menu */
-        .sidebar ul li button:hover {
-            color: #00ccff; /* Azul fluorescente claro para hover */
+        /* Botão de voltar posicionado no final da sidebar */
+        .back-button {
+            background-color: rgba(255, 255, 255, 0.2); /* Fundo semi-transparente */
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: auto; /* Empurra o botão para o final da sidebar */
+            margin-bottom: 1cm; /* Sobe o botão em 1cm */
+            text-align: center;
+        }
+
+        /* Efeito hover para o botão de voltar */
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.4);
         }
 
         /* Estilo da área de conteúdo */
         .content {
-            padding-left: 20px;
+            padding-inline-start: 20px;
             flex: 1;
-            padding-top: 20px;
+            padding-block-start: 20px;
             overflow-y: auto; /* Ativa rolagem vertical para conteúdo longo */
-            height: 100%; /* Área de conteúdo ocupando 100% da altura */
+            block-size: 100%; /* Área de conteúdo ocupando 100% da altura */
         }
 
         /* Título e texto das seções */
@@ -113,17 +166,38 @@
 
         h2 {
             color: #ff4081; /* Rosa fluorescente */
+            text-shadow: 
+            1px 1px 0px black,   /* Sombra no canto inferior direito */
+            -1px 1px 0px black,  /* Sombra no canto inferior esquerdo */
+            1px -1px 0px black,  /* Sombra no canto superior direito */
+            -1px -1px 0px black; /* Sombra no canto superior esquerdo */
+        }
+        h4 {
+            color: #ffffff; /* Rosa fluorescente */
+            text-shadow: 
+            1px 1px 0px black,   /* Sombra no canto inferior direito */
+            -1px 1px 0px black,  /* Sombra no canto inferior esquerdo */
+            1px -1px 0px black,  /* Sombra no canto superior direito */
+            -1px -1px 0px black; /* Sombra no canto superior esquerdo */
         }
 
         p {
             font-size: 18px; /* Aumenta o tamanho da fonte em alguns números */
-            color: #f4f0e6; /* Branco perola */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.10); /* Sombra do texto */
+            color: #f4f0e6f8; /* Branco perola */
+            text-shadow: 8px 8px 10px rgb(0, 0, 7);
+            /* Sombra do texto */
+            color: white; /* Cor do texto */
+        text-shadow: 
+            1px 1px 0px black,   /* Sombra no canto inferior direito */
+            -1px 1px 0px black,  /* Sombra no canto inferior esquerdo */
+            1px -1px 0px black,  /* Sombra no canto superior direito */
+            -1px -1px 0px black; /* Sombra no canto superior esquerdo */
+        
         }
 
         /* Estilos de informações de contato */
         .contact-info {
-            margin-bottom: 20px;
+            margin-block-end: 20px;
         }
 
         .contact-info p {
@@ -143,7 +217,7 @@
         #experiencias-opcoes,
         #projetos-opcoes {
             display: none;
-            margin-left: 20px;
+            margin-inline-start: 20px;
         }
 
         /* Estilos para as opções dentro dos menus suspensos */
@@ -167,23 +241,31 @@
     </style>
 </head>
 <body>
+    <!-- Primeira página com o círculo central -->
+    <div class="initial-page">
+        <div class="circle-icon"></div>
+        <button class="enter-button" onclick="openSecondPage()">Entrar</button>
+    </div>
+
+    <!-- Segunda página (conteúdo principal já existente) -->
     <div class="container">
+
         <!-- Menu lateral -->
         <div class="sidebar">
             <ul>
-                <li><a href="javascript:void(0);" onclick="showInfo('resumo', true)">Resumo</a></li>
-                <li><a href="javascript:void(0);" onclick="showInfo('objetivo', true)">Objetivo</a></li>
-                <li><a href="javascript:void(0);" onclick="showInfo('formacao', true)">Formação</a></li>
-                <li><a href="javascript:void(0);" onclick="showInfo('certificacoes', true)">Certificações</a></li>
+                <li><a href="javascript:void(0);" onclick="showInfo('resumo')">Resumo</a></li>
+                <li><a href="javascript:void(0);" onclick="showInfo('objetivo')">Objetivo</a></li>
+                <li><a href="javascript:void(0);" onclick="showInfo('formacao')">Formação</a></li>
+                <li><a href="javascript:void(0);" onclick="showInfo('certificacoes')">Certificações</a></li>
 
                 <!-- Botão para alternar a visibilidade das empresas -->
                 <li><button onclick="toggleSection('experiencias-opcoes', 'projetos-opcoes')">Experiência Profissional</button></li>
 
                 <!-- Empresas ocultas inicialmente -->
                 <div id="experiencias-opcoes">
-                    <li class="empresa-item" onclick="selectOption(event); showInfo('contact2sale', false)">Contact2Sale</li>
-                    <li class="empresa-item" onclick="selectOption(event); showInfo('latam', false)">Latam Airlines</li>
-                    <li class="empresa-item" onclick="selectOption(event); showInfo('canaa', false)">Canaã Estacionamento</li>
+                    <li class="empresa-item" onclick="selectOption(event); showInfo('contact2sale')">Contact2Sale</li>
+                    <li class="empresa-item" onclick="selectOption(event); showInfo('latam')">Latam Airlines</li>
+                    <li class="empresa-item" onclick="selectOption(event); showInfo('canaa')">Canaã Estacionamento</li>
                 </div>
 
                 <!-- Botão para alternar a visibilidade dos projetos -->
@@ -191,11 +273,14 @@
 
                 <!-- Projetos ocultos inicialmente -->
                 <div id="projetos-opcoes">
-                    <li class="projeto-item" onclick="selectOption(event); showInfo('software', false)">Projeto de Software</li>
-                    <li class="projeto-item" onclick="selectOption(event); showInfo('bd', false)">Projeto de Banco de Dados</li>
-                    <li class="projeto-item" onclick="selectOption(event); showInfo('web', false)">Desenvolvimento Web</li>
+                    <li class="projeto-item" onclick="selectOption(event); showInfo('software')">Projeto de Software</li>
+                    <li class="projeto-item" onclick="selectOption(event); showInfo('bd')">Projeto de Banco de Dados</li>
+                    <li class="projeto-item" onclick="selectOption(event); showInfo('web')">Desenvolvimento Web</li>
                 </div>
             </ul>
+
+            <!-- Botão de voltar no final da sidebar -->
+            <button class="back-button" onclick="backToFirstPage()">Voltar</button>
         </div>
 
         <!-- Conteúdo principal -->
@@ -210,24 +295,24 @@
                 <p><strong>Idade:</strong> 34 anos</p>
             </div>
 
-            <!-- Seções de conteúdo -->
-            <section id="resumo">
+            <!-- Seções de conteúdo já existentes -->
+            <section id="resumo" style="display: none;">
                 <h2>Resumo</h2>
                 <p>
-                    Possuo experiência na área de Suporte ao Cliente, com foco em atendimento e resolução de problemas.<br><br>
-                    Além disso, tenho experiência em Melhoria Contínua de processos, buscando otimizar fluxos de trabalho e aumentar a eficiência.<br><br>
-                    Tenho conhecimento intermediário nas ferramentas Google Workspace e Microsoft 365, além de experiência com ferramentas de MCC.<br><br>
-                    Também possuo uma sólida base em lógica de programação e estrutura de código em Java, com conhecimentos em bancos de dados como MySQL e MongoDB.<br><br>
-                    Nível básico em automação de testes utilizando Selenium WebDriver, Selenium IDE e na plataforma de integração Make (Integromat).
+                    Tenho experiência em Suporte ao Cliente, focado no atendimento e resolução de problemas. 
+                    Também atuei em Melhoria Contínua, otimizando fluxos de trabalho e eficiência. 
+                    Tenho conhecimento intermediário em Google Workspace, Microsoft 365 e MCC. 
+                    Possuo base sólida em lógica de programação, Java, HTML e CSS além de bancos de dados como MySQL e MongoDB. 
+                    Nível básico em automação de testes com Selenium WebDriver, Selenium IDE e na plataforma Make (Integromat).
                 </p>
             </section>
 
-            <section id="objetivo">
+            <section id="objetivo" style="display: none;">
                 <h2>Objetivo</h2>
                 <p>Analista de Tecnologia / Suporte e Sucesso do cliente</p>
             </section>
 
-            <section id="formacao">
+            <section id="formacao" style="display: none;">
                 <h2>Formação</h2>
                 <p>
                     Universidade Anhanguera<br><br>
@@ -236,7 +321,7 @@
                 </p>
             </section>
 
-            <section id="certificacoes">
+            <section id="certificacoes" style="display: none;">
                 <h2>Certificações</h2>
                 <p>
                     Curso de Algoritmos e Lógica da Programação - Udemy<br><br>
@@ -254,7 +339,7 @@
             </section>
 
             <section id="latam" style="display:none;">
-                <h2>Latam Airlines</h4>
+                <h2>Latam Airlines</h2>
                 <h4>Analista de Melhoria Contínua (12/2022 - 03/2023)</h4>
                 <p>Análise e desenvolvimento de projetos voltados para a melhoria de processos, com base na filosofia Lean Manufacturing.</p>
                 <p>Aplicação de metodologias como A3, Gerenciamento Diário, Kanban, Gemba Walk, Takt Time, 5S e Diagrama de Ishikawa.</p>
@@ -293,59 +378,55 @@
         </div>
     </div>
 
+    <!-- Link para o arquivo JS -->
     <script>
+        // Função para trocar para a segunda página
+        function openSecondPage() {
+            document.querySelector('.initial-page').style.display = 'none'; // Esconde a primeira página
+            document.querySelector('.container').style.display = 'flex'; // Mostra a segunda página
+        }
+
+        // Função para voltar para a primeira página
+        function backToFirstPage() {
+            document.querySelector('.container').style.display = 'none'; // Esconde a segunda página
+            document.querySelector('.initial-page').style.display = 'flex'; // Mostra a primeira página
+        }
+
+        // Função para mostrar a seção correspondente
+        function showInfo(sectionId) {
+            document.querySelectorAll('.content section').forEach(function(section) {
+                section.style.display = 'none'; // Oculta todas as seções
+            });
+            document.getElementById(sectionId).style.display = 'block'; // Mostra a seção clicada
+        }
+
         // Função para alternar a visibilidade de seções
-        // Agora, fecha o menu que não está sendo clicado
         function toggleSection(sectionIdToShow, sectionIdToHide) {
             var sectionToShow = document.getElementById(sectionIdToShow);
             var sectionToHide = document.getElementById(sectionIdToHide);
-            
-            // Mostrar o menu clicado
+
             if (sectionToShow.style.display === "none" || sectionToShow.style.display === "") {
                 sectionToShow.style.display = "block";
             } else {
                 sectionToShow.style.display = "none";
             }
 
-            // Sempre fechar o menu oposto
-            sectionToHide.style.display = "none";
-        }
-
-        // Função para mostrar a informação da empresa, projeto ou seção geral
-        // O parâmetro closeMenus define se deve fechar os menus suspensos
-        function showInfo(infoId, closeMenus) {
-            // Oculta todas as seções de empresa, projetos e seções gerais
-            document.querySelectorAll('.content section').forEach(function(section) {
-                section.style.display = 'none';
-            });
-
-            // Se closeMenus for verdadeiro, fecha os menus suspensos
-            if (closeMenus) {
-                document.getElementById('experiencias-opcoes').style.display = 'none';
-                document.getElementById('projetos-opcoes').style.display = 'none';
-            }
-
-            // Exibe a seção clicada
-            document.getElementById(infoId).style.display = 'block';
+            sectionToHide.style.display = "none"; // Sempre fecha a outra seção
         }
 
         // Função para destacar a opção selecionada
         function selectOption(event) {
-            // Remove a classe 'selected' de todas as opções
             document.querySelectorAll('.empresa-item, .projeto-item').forEach(function(item) {
-                item.classList.remove('selected');
+                item.classList.remove('selected'); // Remove a classe 'selected' de todas as opções
             });
-
-            // Adiciona a classe 'selected' na opção clicada
-            event.target.classList.add('selected');
+            event.target.classList.add('selected'); // Adiciona a classe 'selected' na opção clicada
         }
 
-        // Função para ocultar todas as seções ao carregar a página
+        // Quando a página é carregada
         window.onload = function() {
-            // Oculta todas as seções
-            document.querySelectorAll('.content section').forEach(function(section) {
-                section.style.display = 'none';
-            });
+            // Esconde a segunda página quando a página é recarregada
+            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.initial-page').style.display = 'flex';
         };
     </script>
 </body>
