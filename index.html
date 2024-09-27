@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currículo - Alisson H. Correia</title>
 
-    <!-- Link para o Google Fonts (fonte estilosa) -->
+    <!-- Link para o Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
 
     <style>
@@ -18,8 +17,6 @@
             font-family: 'Poppins', sans-serif; /* Fonte Poppins aplicada */
             block-size: 100%;
             inline-size: 100%;
-            display: flex;
-            flex-direction: column;
             overflow: hidden;
             background-image: url("fundoDeTela2.png"); /* Caminho da imagem de fundo */
             background-size: cover;
@@ -53,7 +50,7 @@
             transition: transform 0.3s ease;
             position: relative;
         }
-        
+
         /* Efeito ao passar o mouse no círculo */
         .circle-icon:hover {
             transform: scale(1.1); /* Aumenta ligeiramente o círculo ao passar o mouse */
@@ -77,377 +74,276 @@
             background-color: rgba(255, 255, 255, 0.4);
         }
 
-        /* Segunda página (conteúdo principal já existente) */
-        .container {
+        /* Segunda página com os círculos */
+        .flow-page {
             display: none; /* Ocultada inicialmente */
             inline-size: 100vw;
             block-size: 100vh;
             box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
+        }
+
+        /* Estilo para o container dos círculos */
+        .circle-container {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px; /* Espaçamento entre os círculos */
+            flex-wrap: nowrap;
         }
 
-        /* Sidebar com flexbox */
-        .sidebar {
-            inline-size: 250px;
+        /* Círculo padrão */
+        .circle {
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2); /* Fundo dos círculos */
             display: flex;
-            flex-direction: column;
-            padding-block-start: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            block-size: 100vh; /* Sidebar ocupando 100% da altura da tela */
-        }
-
-        /* Flex para empurrar o botão para o final */
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            flex-grow: 1; /* Ocupa o espaço disponível */
-        }
-
-        .sidebar ul li {
-            padding: 15px;
+            justify-content: center;
+            align-items: center;
             text-align: center;
             cursor: pointer;
-            color: #c1c1c1; /* Cor cinza clara */
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
+            font-size: 14px;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
 
-        .sidebar ul li a, .sidebar ul li button {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            inline-size: 100%;
-            background: none;
-            border: none;
-            font-size: inherit;
-            cursor: pointer;
+        /* Efeito ao passar o mouse nos círculos */
+        .circle:hover {
+            transform: scale(1.1);
         }
 
-        .sidebar ul li:hover {
-            transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
-            color: #00ccff; /* Azul fluorescente claro para hover */
+        /* Tamanhos dos círculos */
+        .circle.small {
+            inline-size: 100px;
+            block-size: 100px;
         }
 
-        /* Botão de voltar posicionado no final da sidebar */
-        .back-button {
-            background-color: rgba(255, 255, 255, 0.2); /* Fundo semi-transparente */
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            width: 100%;
-            margin-top: auto; /* Empurra o botão para o final da sidebar */
-            margin-bottom: 1cm; /* Sobe o botão em 1cm */
-            text-align: center;
+        .circle.medium {
+            inline-size: 150px;
+            block-size: 150px;
         }
 
-        /* Efeito hover para o botão de voltar */
-        .back-button:hover {
-            background-color: rgba(255, 255, 255, 0.4);
+        .circle.large {
+            inline-size: 200px;
+            block-size: 200px;
         }
 
-        /* Estilo da área de conteúdo */
-        .content {
-            padding-inline-start: 20px;
-            flex: 1;
-            padding-block-start: 20px;
-            overflow-y: auto; /* Ativa rolagem vertical para conteúdo longo */
-            block-size: 100%; /* Área de conteúdo ocupando 100% da altura */
-        }
-
-        /* Título e texto das seções */
-        h1 {
-            color: #fff; /* H1 em branco */
-        }
-
-        h2 {
-            color: #ff4081; /* Rosa fluorescente */
-            text-shadow: 
-            1px 1px 0px black,   /* Sombra no canto inferior direito */
-            -1px 1px 0px black,  /* Sombra no canto inferior esquerdo */
-            1px -1px 0px black,  /* Sombra no canto superior direito */
-            -1px -1px 0px black; /* Sombra no canto superior esquerdo */
-        }
-        h4 {
-            font-size: 16px;
-            color: #ffffff; /* Rosa fluorescente */
-            text-shadow: 
-            1px 1px 0px black,   /* Sombra no canto inferior direito */
-            -1px 1px 0px black,  /* Sombra no canto inferior esquerdo */
-            1px -1px 0px black,  /* Sombra no canto superior direito */
-            -1px -1px 0px black; /* Sombra no canto superior esquerdo */
-        }
-
-        p {
-            font-size: 14px; /* Aumenta o tamanho da fonte em alguns números */
-            color: #f4f0e6f8; /* Branco perola */
-            text-shadow: 8px 8px 10px rgb(0, 0, 7);
-            /* Sombra do texto */
-            color: white; /* Cor do texto */
-            text-shadow: 
-            1px 1px 0px black,   /* Sombra no canto inferior direito */
-            -1px 1px 0px black,  /* Sombra no canto inferior esquerdo */
-            1px -1px 0px black,  /* Sombra no canto superior direito */
-            -1px -1px 0px black; /* Sombra no canto superior esquerdo */
-            background-color: rgba(0, 0, 0, 0.07);
-            padding: 0px;
-            border-radius: 0px;
-        
-        }
-        a {
-           color: #00ccff; /* Mude esse código de cor para a cor que você quiser */
-           text-decoration: none; /* Remove o sublinhado se preferir */
-          }
-
-           /* Cor do link ao passar o mouse (hover) */
-        a:hover {
-           color: #ff4081; /* Cor ao passar o mouse */
-           text-decoration: underline; /* Adiciona sublinhado ao passar o mouse, se desejar */
-         }
- 
-        /* Estilos de informações de contato */
-        .contact-info {
-            margin-block-end: 20px;
-        }
-
-        .contact-info p {
-            margin: 5px 0;
-        }
-
-        .contact-info a {
-            color: #00ccff; /* Azul fluorescente claro para links */
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        /* Ajustes para seções específicas */
-        #experiencias-opcoes,
-        #projetos-opcoes {
+        /* Subcírculos */
+        .sub-circle-container {
             display: none;
-            margin-inline-start: 20px;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            position: absolute;
+            top: 70%;
         }
 
-        /* Estilos para as opções dentro dos menus suspensos */
-        .empresa-item, .projeto-item {
+        .sub-circle {
+            inline-size: 100px;
+            block-size: 100px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            color: #c1c1c1; /* Cor padrão das opções */
-            padding: 10px 0;
-            transition: color 0.3s ease;
+            transition: transform 0.3s ease;
+            text-align: center;
+            font-size: 12px;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
 
-        /* Estilo hover para as opções do menu suspenso */
-        .empresa-item:hover, .projeto-item:hover {
-            color: #00ccff; /* Cor ao passar o mouse: azul fluorescente */
+        .sub-circle:hover {
+            transform: scale(1.1);
         }
 
-        /* Estilo da opção selecionada */
-        .selected {
-            color: #00ccff; /* Azul fluorescente quando a opção está selecionada */
-            font-weight: bold;
+        /* Popups */
+        .popup {
+            display: none;
+            position: absolute;
+            inset-block-start: 50%;
+            inset-inline-start: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparente */
+            padding: 20px;
+            border-radius: 10px;
+            inline-size: 60%;
+            color: #fff;
+            z-index: 10;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .overlay {
+            display: none;
+            position: absolute;
+            inset-block-start: 0;
+            inset-inline-start: 0;
+            inline-size: 100%;
+            block-size: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 5;
+        }
+
+        .overlay.active {
+            display: block;
         }
     </style>
 </head>
 <body>
+
     <!-- Primeira página com o círculo central -->
-    <div class="initial-page">
+    <div class="initial-page" id="initialPage">
         <div class="circle-icon"></div>
-        <button class="enter-button" onclick="openSecondPage()">Entrar</button>
+        <button class="enter-button" onclick="openFlowPage()">Entrar</button>
     </div>
 
-    <!-- Segunda página (conteúdo principal já existente) -->
-    <div class="container">
-
-        <!-- Menu lateral -->
-        <div class="sidebar">
-            <ul>
-                <li><a href="javascript:void(0);" onclick="showInfo('resumo')">Resumo</a></li>
-                <li><a href="javascript:void(0);" onclick="showInfo('objetivo')">Objetivo</a></li>
-                <li><a href="javascript:void(0);" onclick="showInfo('formacao')">Formação</a></li>
-                <li><a href="javascript:void(0);" onclick="showInfo('certificacoes')">Certificações</a></li>
-
-                <!-- Botão para alternar a visibilidade das empresas -->
-                <li><button onclick="toggleSection('experiencias-opcoes', 'projetos-opcoes')">Experiência Profissional</button></li>
-
-                <!-- Empresas ocultas inicialmente -->
-                <div id="experiencias-opcoes">
-                    <li class="empresa-item" onclick="selectOption(event); showInfo('contact2sale')">Contact2Sale</li>
-                    <li class="empresa-item" onclick="selectOption(event); showInfo('latam')">Latam Airlines</li>
-                    <li class="empresa-item" onclick="selectOption(event); showInfo('canaa')">Canaã Estacionamento</li>
-                </div>
-
-                <!-- Botão para alternar a visibilidade dos projetos -->
-                <li><button onclick="toggleSection('projetos-opcoes', 'experiencias-opcoes')">Projetos Realizados</button></li>
-
-                <!-- Projetos ocultos inicialmente -->
-                <div id="projetos-opcoes">
-                    <li class="projeto-item" onclick="selectOption(event); showInfo('software')">Projeto de Software</li>
-                    <li class="projeto-item" onclick="selectOption(event); showInfo('bd')">Projeto de Banco de Dados</li>
-                    <li class="projeto-item" onclick="selectOption(event); showInfo('web')">Desenvolvimento Web</li>
-                </div>
-            </ul>
-
-            <!-- Botão de voltar no final da sidebar -->
-            <button class="back-button" onclick="backToFirstPage()">Voltar</button>
+    <!-- Segunda página com círculos alinhados -->
+    <div class="flow-page" id="flowPage">
+        <div class="circle-container">
+            <div class="circle small" onclick="toggleSubCircles('projetos-sub')">Projetos</div>
+            <div class="circle medium" onclick="toggleSubCircles('experiencia-sub')">Experiência</div>
+            <div class="circle large" onclick="closeSubCircles(); showPopup('dados-popup')">Dados Pessoais</div>
+            <div class="circle medium" onclick="closeSubCircles(); showPopup('resumo-popup')">Resumo</div>
+            <div class="circle small" onclick="closeSubCircles(); showPopup('objetivo-popup')">Objetivo</div>
         </div>
 
-        <!-- Conteúdo principal -->
-        <div class="content">
-            <h1>Alisson H. Correia</h1>
-            <div class="contact-info">
-                <p><strong>Telefone:</strong> (11) 99200-1638 / (11) 91481-6272</p>
-                <p><strong>Email:</strong> <a href="mailto:alissoncorreia31@gmail.com">alissoncorreia31@gmail.com</a></p>
-                <p><strong>Endereço:</strong> Jd Europa - Suzano - SP</p>
-                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/alisson-correia-039798244" target="_blank">linkedin.com/in/alisson-correia</a></p>
-                <p><strong>Estado Civil:</strong> Casado</p>
-                <p><strong>Idade:</strong> 34 anos</p>
-            </div>
+        <!-- Subcírculos para Projetos -->
+        <div class="sub-circle-container" id="projetos-sub">
+            <div class="sub-circle" onclick="showPopup('software-popup')">Software</div>
+            <div class="sub-circle" onclick="showPopup('bd-popup')">Banco de Dados</div>
+            <div class="sub-circle" onclick="showPopup('web-popup')">Web</div>
+        </div>
 
-            <!-- Seções de conteúdo já existentes -->
-            <section id="resumo" style="display: none;">
-                <h2>Resumo</h2>
-                <p>
-                    Tenho experiência em Suporte ao Cliente, focado no atendimento e resolução de problemas. 
-                    Também atuei em Melhoria Contínua, otimizando fluxos de trabalho e eficiência. 
-                    Tenho conhecimento intermediário em Google Workspace, Microsoft 365 e MCC. 
-                    Possuo base sólida em lógica de programação, Java, HTML e CSS além de bancos de dados como MySQL e MongoDB. 
-                    Nível básico em automação de testes com Selenium WebDriver, Selenium IDE e na plataforma Make (Integromat).
-                </p>
-            </section>
-
-            <section id="objetivo" style="display: none;">
-                <h2>Objetivo</h2>
-                <p>Analista de Tecnologia / Suporte e Sucesso do cliente</p>
-            </section>
-
-            <section id="formacao" style="display: none;">
-                <h2>Formação</h2>
-                <p>
-                    Universidade Anhanguera<br><br>
-                    Bacharelado em Sistema de Informação (Cursando)<br><br>
-                    Início: 06/2022 Conclusão: 12/2025
-                </p>
-            </section>
-
-            <section id="certificacoes" style="display: none;">
-                <h2>Certificações</h2>
-                <p>
-                    Curso de Algoritmos e Lógica da Programação - Udemy<br><br>
-                    Curso de Java - Udemy<br><br>
-                    Curso de automação com Selenium IDE/WebDriver - Udemy
-                </p>
-            </section>
-
-            <!-- Seções ocultas inicialmente -->
-            <section id="contact2sale" style="display:none;">
-                <h2>Contact2Sale</h2>
-                <h4>Analista de Suporte (04/2023 - Atual)</h4>
-                <p>Análise de solicitações e resolução de dúvidas e problemas dos clientes relacionados às configurações do APP e WebApp C2S.
-                   Atendimento através de múltiplas plataformas: WhatsApp, OctaDesk, E-mail, Google Hangouts, MicroSip e Ndesk.
-                </p>   
-            </section>
-
-            <section id="latam" style="display:none;">
-                <h2>Latam Airlines</h2>
-                <h4>Analista de Melhoria Contínua (12/2022 - 03/2023)</h4>
-               <p>Análise e desenvolvimento de projetos voltados para a melhoria de processos, com base na filosofia Lean Manufacturing.  
-                  Aplicação de metodologias como A3, Gerenciamento Diário, Kanban, Gemba Walk, Takt Time, 5S e Diagrama de Ishikawa.
-                  Execução de projetos utilizando Pacote Office e Google Workspace.
-               </p>   
-
-                <h4>Agente de bagagem e rampa (05/2015 - 10/2019)</h4>
-                <p>Realização de triagem, direcionamento, e operações de carga e descarga de bagagens em contêineres e aeronaves.</p>
-                    
-            </section>
-
-            <section id="canaa" style="display:none;">
-                <h2>Canaã Estacionamento</h2>
-                <h4>Operador de Estacionamento (03/2020 - 10/2021)</h4>
-                <p>Atendimento e orientação ao cliente, controle de caixa e monitoramento do acesso de veículos.
-                   Utilização do sistema Prossiga para organização de cadastros e Excel para atualização e controle de dados.
-                </p>   
-            </section>
-
-            <!-- Seção de Projetos Realizados (inicialmente oculta) -->
-            <section id="software" style="display:none;">
-                <h2>Projeto de Software</h2>
-                <p>Desenvolvimento de um projeto usando ferramentas específicas, garantindo a satisfação e alinhando as expectativas do cliente.</p>
-                <a href="https://docs.google.com/document/d/19c2weVNj3146v0ggxkSkmRKbEAOOWcguiiPTDQ7UpVA/edit" target="_blank"><span>Acesse o portfólio</span></a>
-            </section>
-
-            <section id="bd" style="display:none;">
-                <h2>Projeto de Banco de Dados</h2>
-                <p>Detalhes do projeto de banco de dados...</p>
-            </section>
-
-            <section id="web" style="display:none;">
-                <h2>Desenvolvimento Web</h2>
-                <p>Desenvolvimento com Angular.JS <br><br>
-                <a href="https://docs.google.com/document/d/1MJC2IQTmaC2DhT4EZKFDiBg4Ngpwnvw9EVLJsWmMHJg/edit" target="_blank"><span>Acesse o portfólio</span></a>
-                <br><br>
-                   Desenvolvimento com Node.JS<br><br>
-                <a href="https://docs.google.com/document/d/17UoK3pEaC9O5D5-ztbhRDG9v0iVOHxTc4kyUgwEEjx0/edit" target="_blank"><span>Acesse o portfólio</span></a>
-                </p>
-            </section>
+        <!-- Subcírculos para Experiência -->
+        <div class="sub-circle-container" id="experiencia-sub">
+            <div class="sub-circle" onclick="showPopup('contact2sale-popup')">Contact2Sale</div>
+            <div class="sub-circle" onclick="showPopup('latam-popup')">Latam</div>
+            <div class="sub-circle" onclick="showPopup('canaa-popup')">Canaã</div>
         </div>
     </div>
 
-    <!-- Link para o arquivo JS -->
+    <!-- Popups -->
+    <div class="popup" id="dados-popup">
+        <h2>Dados Pessoais</h2>
+        <p><strong>Telefone:</strong> (11) 99200-1638 / (11) 91481-6272</p>
+        <p><strong>Email:</strong> <a href="mailto:alissoncorreia31@gmail.com">alissoncorreia31@gmail.com</a></p>
+        <p><strong>Endereço:</strong> Jd Europa - Suzano - SP</p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/alisson-correia-039798244" target="_blank">linkedin.com/in/alisson-correia</a></p>
+        <p><strong>Estado Civil:</strong> Casado</p>
+        <p><strong>Idade:</strong> 34 anos</p>
+    </div>
+
+    <div class="popup" id="resumo-popup">
+        <h2>Resumo</h2>
+        <p>
+            Tenho experiência em Suporte ao Cliente, focado no atendimento e resolução de problemas. 
+            Também atuei em Melhoria Contínua, otimizando fluxos de trabalho e eficiência. 
+            Tenho conhecimento intermediário em Google Workspace, Microsoft 365 e MCC. 
+            Possuo base sólida em lógica de programação, Java, HTML e CSS além de bancos de dados como MySQL e MongoDB. 
+            Nível básico em automação de testes com Selenium WebDriver, Selenium IDE e na plataforma Make (Integromat).
+        </p>
+    </div>
+
+    <div class="popup" id="objetivo-popup">
+        <h2>Objetivo</h2>
+        <p>Analista de Tecnologia / Suporte e Sucesso do cliente</p>
+    </div>
+
+    <!-- Popups para Experiência -->
+    <div class="popup" id="contact2sale-popup">
+        <h2>Contact2Sale</h2>
+        <h4>Analista de Suporte (04/2023 - Atual)</h4>
+        <p>Análise de solicitações e resolução de dúvidas e problemas dos clientes relacionados às configurações do APP e WebApp C2S.
+           Atendimento através de múltiplas plataformas: WhatsApp, OctaDesk, E-mail, Google Hangouts, MicroSip e Ndesk.</p>
+    </div>
+
+    <div class="popup" id="latam-popup">
+        <h2>Latam Airlines</h2>
+        <h4>Analista de Melhoria Contínua (12/2022 - 03/2023)</h4>
+        <p>Análise e desenvolvimento de projetos voltados para a melhoria de processos, com base na filosofia Lean Manufacturing.
+        Aplicação de metodologias como A3, Gerenciamento Diário, Kanban, Gemba Walk, Takt Time, 5S e Diagrama de Ishikawa.
+        Execução de projetos utilizando Pacote Office e Google Workspace.</p>
+    </div>
+
+    <div class="popup" id="canaa-popup">
+        <h2>Canaã Estacionamento</h2>
+        <h4>Operador de Estacionamento (03/2020 - 10/2021)</h4>
+        <p>Atendimento e orientação ao cliente, controle de caixa e monitoramento do acesso de veículos.
+        Utilização do sistema Prossiga para organização de cadastros e Excel para atualização e controle de dados.</p>
+    </div>
+
+    <!-- Popups para Projetos -->
+    <div class="popup" id="software-popup">
+        <h2>Projeto de Software</h2>
+        <p>Desenvolvimento de um projeto usando ferramentas específicas, garantindo a satisfação e alinhando as expectativas do cliente.</p>
+    </div>
+
+    <div class="popup" id="bd-popup">
+        <h2>Projeto de Banco de Dados</h2>
+        <p>Desenvolvimento de projeto de banco de dados com foco em otimização e armazenamento de grandes volumes de dados.</p>
+    </div>
+
+    <div class="popup" id="web-popup">
+        <h2>Desenvolvimento Web</h2>
+        <p>Desenvolvimento com Angular.JS e Node.JS para criar aplicações web dinâmicas e escaláveis.</p>
+    </div>
+
+    <div class="overlay" onclick="closePopup()"></div>
+
     <script>
-        // Função para trocar para a segunda página
-        function openSecondPage() {
-            document.querySelector('.initial-page').style.display = 'none'; // Esconde a primeira página
-            document.querySelector('.container').style.display = 'flex'; // Mostra a segunda página
+        // Função para abrir a segunda página
+        function openFlowPage() {
+            document.getElementById('initialPage').style.display = 'none'; // Esconde a primeira página
+            document.getElementById('flowPage').style.display = 'flex'; // Mostra a segunda página
         }
 
-        // Função para voltar para a primeira página
-        function backToFirstPage() {
-            document.querySelector('.container').style.display = 'none'; // Esconde a segunda página
-            document.querySelector('.initial-page').style.display = 'flex'; // Mostra a primeira página
+        // Função para mostrar o popup
+        function showPopup(popupId) {
+            closePopup(); // Fecha qualquer popup ativo
+            document.getElementById(popupId).classList.add('active');
+            document.querySelector('.overlay').classList.add('active');
         }
 
-        // Função para mostrar a seção correspondente
-        function showInfo(sectionId) {
-            document.querySelectorAll('.content section').forEach(function(section) {
-                section.style.display = 'none'; // Oculta todas as seções
+        // Função para fechar os popups ao clicar fora ou abrir outro
+        function closePopup() {
+            document.querySelectorAll('.popup').forEach(function(popup) {
+                popup.classList.remove('active');
             });
-            document.getElementById(sectionId).style.display = 'block'; // Mostra a seção clicada
+            document.querySelector('.overlay').classList.remove('active');
         }
 
-        // Função para alternar a visibilidade de seções
-        function toggleSection(sectionIdToShow, sectionIdToHide) {
-            var sectionToShow = document.getElementById(sectionIdToShow);
-            var sectionToHide = document.getElementById(sectionIdToHide);
-
-            if (sectionToShow.style.display === "none" || sectionToShow.style.display === "") {
-                sectionToShow.style.display = "block";
-            } else {
-                sectionToShow.style.display = "none";
-            }
-
-            sectionToHide.style.display = "none"; // Sempre fecha a outra seção
-        }
-
-        // Função para destacar a opção selecionada
-        function selectOption(event) {
-            document.querySelectorAll('.empresa-item, .projeto-item').forEach(function(item) {
-                item.classList.remove('selected'); // Remove a classe 'selected' de todas as opções
+        // Função para alternar subcírculos, fechando o anterior e abrindo o atual
+        function toggleSubCircles(containerId) {
+            const currentContainer = document.getElementById(containerId);
+            
+            // Fecha os outros subcírculos e abre o clicado
+            document.querySelectorAll('.sub-circle-container').forEach(container => {
+                if (container !== currentContainer) {
+                    container.style.display = 'none'; // Fecha outros subcírculos
+                }
             });
-            event.target.classList.add('selected'); // Adiciona a classe 'selected' na opção clicada
+
+            // Alterna a visibilidade do container clicado
+            currentContainer.style.display = currentContainer.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        // Quando a página é carregada
-        window.onload = function() {
-            // Esconde a segunda página quando a página é recarregada
-            document.querySelector('.container').style.display = 'none';
-            document.querySelector('.initial-page').style.display = 'flex';
-        };
+        // Fecha todos os subcírculos ao clicar em outra opção
+        function closeSubCircles() {
+            document.querySelectorAll('.sub-circle-container').forEach(container => {
+                container.style.display = 'none';
+            });
+        }
+
+        // Fechar popups ao clicar fora
+        document.querySelector('.overlay').addEventListener('click', closePopup);
     </script>
+
 </body>
 </html>
