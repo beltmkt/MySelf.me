@@ -142,10 +142,11 @@
 
         /* Descrição embaixo dos círculos */
         .description {
-            margin-top: 10px;
-            font-size: 14px;
-            color: white;
-            text-align: center;
+            font-size: 18px; /* Aumenta o tamanho da fonte */
+            color: white; /* Cor do texto */
+            text-shadow: 6px 6px 8px rgb(0, 0, 0); /* Adiciona sombra ao texto */
+            margin-top: 10px; /* Espaçamento entre o círculo e o texto */
+            text-align: center; /* Centraliza o texto */
         }
 
         /* Efeito hover para os círculos */
@@ -164,11 +165,13 @@
         }
 
         /* Estilos dos subcírculos */
-        .sub-circle-wrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        .sub-circle-wrapper .description {
+        font-size: 16px; /* Ajuste o tamanho da fonte */
+        color: white; /* Cor do texto */
+        text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.95); /* Sombra no texto */
+        margin-top: 5px; /* Espaçamento entre o subcírculo e o texto */
+        text-align: center; /* Centraliza o texto abaixo do subcírculo */
+
         }
 
         .sub-circle {
@@ -254,6 +257,9 @@
         /* Alterar a cor quando o link estiver sendo clicado */
         a:active {
             color: green; /* Cor do link durante o clique */
+        }
+        p {
+        text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.5); /* Adiciona sombra ao texto */
         }
 
     </style>
@@ -358,6 +364,10 @@
     <!-- Popups -->
     <div class="popup" id="dados-popup">
         <h2>Dados Pessoais</h2>
+
+        <img src="minha-foto.jpg" alt="Minha Foto" style="width: 150px; height: 150px; 
+        border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+        
         <p><strong>Telefone:</strong> (11) 99200-1638 / (11) 91481-6272</p>
         <p><strong>Email:</strong> <a href="mailto:alissoncorreia31@gmail.com">alissoncorreia31@gmail.com</a></p>
         <p><strong>Endereço:</strong> Jd Europa - Suzano - SP</p>
