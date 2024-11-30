@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currículo - Alisson H. Correia</title>
@@ -9,16 +10,21 @@
 
     <style>
         /* Estilos globais */
-        html, body {
-            background-color: rgba(255, 255, 255, 0); /* Transparente */
+        html,
+        body {
+            background-color: rgba(255, 255, 255, 0);
+            /* Transparente */
             margin: 0;
             padding: 0;
-            color: #ffffff; /* Texto branco */
-            font-family: 'Poppins', sans-serif; /* Fonte Poppins aplicada */
+            color: #ffffff;
+            /* Texto branco */
+            font-family: 'Poppins', sans-serif;
+            /* Fonte Poppins aplicada */
             block-size: 100%;
             inline-size: 100%;
             overflow: hidden;
-            background-image: url("fundoDeTela2.png"); /* Caminho da imagem de fundo */
+            background-image: url("fundoDeTela2.png");
+            /* Caminho da imagem de fundo */
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -30,19 +36,28 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            inline-size: 100vw; /* Largura da tela */
-            block-size: 100vh; /* Altura da tela */
+            inline-size: 100vw;
+            /* Largura da tela */
+            block-size: 100vh;
+            /* Altura da tela */
         }
 
         /* Círculo central maior */
         .circle-icon {
-            background-image: url("meulogo.png"); /* Caminho da imagem de fundo do círculo */
-            background-size: cover; /* Faz com que a imagem preencha o círculo */
-            background-position: center; /* Centraliza a imagem */
-            background-repeat: no-repeat; /* Evita repetição da imagem */
-            inline-size: 300px; /* Largura do círculo */
-            block-size: 300px; /* Altura do círculo */
-            border-radius: 50%; /* Faz o container ser redondo */
+            background-image: url("meulogo.png");
+            /* Caminho da imagem de fundo do círculo */
+            background-size: cover;
+            /* Faz com que a imagem preencha o círculo */
+            background-position: center;
+            /* Centraliza a imagem */
+            background-repeat: no-repeat;
+            /* Evita repetição da imagem */
+            inline-size: 300px;
+            /* Largura do círculo */
+            block-size: 300px;
+            /* Altura do círculo */
+            border-radius: 50%;
+            /* Faz o container ser redondo */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -53,17 +68,19 @@
 
         /* Efeito ao passar o mouse no círculo */
         .circle-icon:hover {
-            transform: scale(1.1); /* Aumenta ligeiramente o círculo ao passar o mouse */
+            transform: scale(1.1);
+            /* Aumenta ligeiramente o círculo ao passar o mouse */
         }
 
         /* Botão abaixo do círculo */
         .enter-button {
-            background-color: rgba(255, 255, 255, 0.2); /* Transparente com leve opacidade */
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Transparente com leve opacidade */
             color: #fff;
             border: none;
             padding: 15px 30px;
             font-size: 18px;
-            margin-top: 20px;
+            margin-block-start: 20px;
             cursor: pointer;
             transition: background-color 0.3s ease;
             border-radius: 5px;
@@ -76,7 +93,8 @@
 
         /* Segunda página com os círculos */
         .flow-page {
-            display: none; /* Ocultada inicialmente */
+            display: none;
+            /* Ocultada inicialmente */
             inline-size: 100vw;
             block-size: 100vh;
             box-sizing: border-box;
@@ -91,7 +109,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 30px; /* Espaçamento entre os círculos */
+            gap: 30px;
+            /* Espaçamento entre os círculos */
             flex-wrap: nowrap;
         }
 
@@ -105,7 +124,8 @@
 
         .circle {
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.2); /* Fundo dos círculos */
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Fundo dos círculos */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -117,7 +137,6 @@
         }
 
         /* Tamanhos dos círculos */
-
         .circle.minimum {
             inline-size: 75px;
             /* Ajustado para ser um pouco menor que o .circle.small */
@@ -148,11 +167,15 @@
             transform: scale(1.1);
             /* Aumenta o tamanho ao passar o mouse */
         }
-        
+
+
+
         .circle.small {
             inline-size: 100px;
             block-size: 100px;
         }
+
+
 
         .circle.medium {
             inline-size: 150px;
@@ -168,17 +191,23 @@
         .circle img {
             inline-size: 80%;
             block-size: 80%;
-            object-fit: cover; /* Ajusta a imagem para cobrir o círculo */
+            object-fit: cover;
+            /* Ajusta a imagem para cobrir o círculo */
             border-radius: 50%;
         }
 
         /* Descrição embaixo dos círculos */
         .description {
-            font-size: 18px; /* Aumenta o tamanho da fonte */
-            color: white; /* Cor do texto */
-            text-shadow: 6px 6px 8px rgb(0, 0, 0); /* Adiciona sombra ao texto */
-            margin-top: 10px; /* Espaçamento entre o círculo e o texto */
-            text-align: center; /* Centraliza o texto */
+            font-size: 18px;
+            /* Aumenta o tamanho da fonte */
+            color: white;
+            /* Cor do texto */
+            text-shadow: 6px 6px 8px rgb(0, 0, 0);
+            /* Adiciona sombra ao texto */
+            margin-block-start: 10px;
+            /* Espaçamento entre o círculo e o texto */
+            text-align: center;
+            /* Centraliza o texto */
         }
 
         /* Efeito hover para os círculos */
@@ -193,16 +222,97 @@
             align-items: center;
             gap: 15px;
             position: absolute;
-            top: 70%;
+            inset-block-start: 70%;
         }
+
+
+
+        .circle-button {
+            inline-size: 60px;
+            /* Tamanho do círculo */
+            block-size: 60px;
+            /* Tamanho do círculo */
+            border-radius: 50%;
+            /* Formato circular */
+            background-color: #007BFF;
+            /* Cor do botão */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .circle-button img {
+            inline-size: 30px;
+            /* Tamanho da imagem dentro do botão */
+            block-size: 30px;
+            /* Tamanho da imagem dentro do botão */
+        }
+
+        .circle-button:hover {
+            background-color: #0056b3;
+            /* Cor ao passar o mouse */
+        }
+
+        /* Modal (Pop-up) */
+        .modal {
+            display: none;
+            /* Inicialmente o modal está escondido */
+            position: fixed;
+            /* Fica fixo na tela */
+            z-index: 1;
+            /* Fica na frente de outros elementos */
+            inset-inline-start: 0;
+            inset-block-start: 0;
+            inline-size: 100%;
+            block-size: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            /* Cor de fundo escura */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Transparente */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            inline-size: 80%;
+            /* Pode ajustar o tamanho */
+            max-inline-size: 500px;
+            /* Tamanho máximo do modal */
+        }
+
+        .close {
+            color: #aaa;
+            float: inline-end;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
 
         /* Estilos dos subcírculos */
         .sub-circle-wrapper .description {
-        font-size: 16px; /* Ajuste o tamanho da fonte */
-        color: white; /* Cor do texto */
-        text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.95); /* Sombra no texto */
-        margin-top: 5px; /* Espaçamento entre o subcírculo e o texto */
-        text-align: center; /* Centraliza o texto abaixo do subcírculo */
+            font-size: 16px;
+            /* Ajuste o tamanho da fonte */
+            color: white;
+            /* Cor do texto */
+            text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.95);
+            /* Sombra no texto */
+            margin-block-start: 5px;
+            /* Espaçamento entre o subcírculo e o texto */
+            text-align: center;
+            /* Centraliza o texto abaixo do subcírculo */
 
         }
 
@@ -219,6 +329,110 @@
             overflow: hidden;
         }
 
+        button:hover {
+            background-color: #45a049;
+            /* Cor de fundo ao passar o mouse */
+        }
+
+        /* Estilo do pop-up */
+        .popup {
+            display: none;
+            /* Inicialmente escondido */
+            position: fixed;
+            /* Fixo na tela */
+            inset-block-start: 50%;
+            /* Centralizado verticalmente */
+            inset-inline-start: 50%;
+            /* Centralizado horizontalmente */
+            transform: translate(-50%, -50%);
+            /* Para garantir que o pop-up fique no centro */
+            background-color: white;
+            /* Cor de fundo do pop-up */
+            border-radius: 10px;
+            /* Bordas arredondadas */
+            padding: 20px;
+            /* Espaçamento interno */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Sombra suave */
+            inline-size: 400px;
+            /* Largura do pop-up */
+            z-index: 1000;
+            /* Garante que o pop-up ficará sobre outros elementos */
+        }
+
+        /* Pop-up ativo (quando visível) */
+        .popup.active {
+            display: block;
+            /* Torna o pop-up visível */
+        }
+
+        /* Overlay (fundo semitransparente) */
+        .overlay {
+            display: none;
+            /* Inicialmente escondido */
+            position: fixed;
+            /* Fixo na tela */
+            inset-block-start: 0;
+            inset-inline-start: 0;
+            inline-size: 100%;
+            block-size: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Cor de fundo semitransparente */
+            z-index: 999;
+            /* Fica atrás do pop-up */
+        }
+
+        /* Overlay ativo (quando visível) */
+        .overlay.active {
+            display: block;
+            /* Torna o overlay visível */
+        }
+
+        /* Estilos do formulário dentro do pop-up */
+        .popup form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .popup label {
+            margin-block-end: 5px;
+            font-size: 14px;
+        }
+
+        .popup input {
+            padding: 8px;
+            margin-block-end: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .popup button[type="submit"] {
+            background-color: #4CAF50;
+            /* Cor de fundo do botão de submit */
+            color: white;
+            /* Cor do texto */
+            border: none;
+            /* Sem borda */
+            padding: 10px 20px;
+            /* Espaçamento interno */
+            text-align: center;
+            /* Alinhamento do texto */
+            font-size: 16px;
+            /* Tamanho da fonte */
+            border-radius: 5px;
+            /* Bordas arredondadas */
+            cursor: pointer;
+            /* Cursor de mãozinha */
+            transition: background-color 0.3s ease;
+            /* Transição suave ao passar o mouse */
+        }
+
+        .popup button[type="submit"]:hover {
+            background-color: #45a049;
+            /* Cor de fundo ao passar o mouse */
+        }
+
+
         /* Imagens nos subcírculos */
         .sub-circle img {
             inline-size: 80%;
@@ -231,6 +445,48 @@
             transform: scale(1.1);
         }
 
+        .button-container {
+            display: flex;
+            justify-content: center;
+            /* Centraliza o conteúdo horizontalmente */
+            align-items: flex-end;
+            /* Alinha o botão ao fundo do container */
+            block-size: 100vh;
+            /* Altura da tela */
+        }
+
+        .circle-button {
+            inline-size: 60px;
+            /* Tamanho do botão */
+            block-size: 60px;
+            /* Tamanho do botão */
+            border-radius: 50%;
+            /* Forma circular */
+            background-color: #007BFF;
+            /* Cor do botão */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-block-end: 2cm;
+            /* Distância de 2cm da borda inferior */
+        }
+
+        .circle-button img {
+            inline-size: 30px;
+            /* Tamanho da imagem dentro do botão */
+            block-size: 30px;
+            /* Tamanho da imagem dentro do botão */
+        }
+
+        .circle-button:hover {
+            background-color: #0056b3;
+            /* Cor ao passar o mouse */
+        }
+
+
         /* Popups */
         .popup {
             display: none;
@@ -238,7 +494,8 @@
             inset-block-start: 50%;
             inset-inline-start: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(3, 3, 3, 0.644); /* Semi-transparente */
+            background-color: rgba(3, 3, 3, 0.644);
+            /* Semi-transparente */
             padding: 20px;
             border-radius: 10px;
             inline-size: 60%;
@@ -266,34 +523,42 @@
         }
 
         a {
-            color: blue; /* Cor do link normal */
-            text-decoration: none; /* Remover sublinhado do link */
+            color: blue;
+            /* Cor do link normal */
+            text-decoration: none;
+            /* Remover sublinhado do link */
         }
 
         /* Alterar a cor quando o link for clicado */
         a:visited {
-            color: purple; /* Cor do link já visitado */
+            color: purple;
+            /* Cor do link já visitado */
         }
 
         /* Alterar a cor quando o link for focado (por teclado) */
         a:focus {
-            color: orange; /* Cor ao focar no link */
+            color: orange;
+            /* Cor ao focar no link */
         }
 
         /* Alterar a cor ao passar o mouse */
         a:hover {
-            color: red; /* Cor do link ao passar o mouse */
-            text-decoration: underline; /* Adicionar sublinhado ao passar o mouse */
+            color: red;
+            /* Cor do link ao passar o mouse */
+            text-decoration: underline;
+            /* Adicionar sublinhado ao passar o mouse */
         }
 
         /* Alterar a cor quando o link estiver sendo clicado */
         a:active {
-            color: green; /* Cor do link durante o clique */
-        }
-        p {
-        text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.5); /* Adiciona sombra ao texto */
+            color: green;
+            /* Cor do link durante o clique */
         }
 
+        p {
+            text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.5);
+            /* Adiciona sombra ao texto */
+        }
     </style>
 </head>
 <body>
