@@ -117,6 +117,38 @@
         }
 
         /* Tamanhos dos círculos */
+
+        .circle.minimum {
+            inline-size: 75px;
+            /* Ajustado para ser um pouco menor que o .circle.small */
+            block-size: 75px;
+            /* Manter altura igual à largura */
+            font-size: 16px;
+            /* Ajuste o tamanho da fonte conforme necessário */
+            border-radius: 50%;
+           
+            /* Escolha uma cor adequada */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .circle.minimum img {
+            inline-size: 70%;
+            /* Ajustado para 50% do tamanho do círculo */
+            block-size: 70%;
+            /* Manter a proporção da imagem */
+            object-fit: cover;
+            /* Garantir que a imagem não seja distorcida */
+        }
+
+        .circle.minimum:hover {
+            transform: scale(1.1);
+            /* Aumenta o tamanho ao passar o mouse */
+        }
+        
         .circle.small {
             inline-size: 100px;
             block-size: 100px;
@@ -496,7 +528,31 @@
 
     <div class="overlay" onclick="closePopup()"></div>
 
-    <script>
+   
+        <div class="popup" id="agendar-popup">
+            <h2>Agendar Entrevista</h2>
+            <form id="interviewForm" method="POST" action="agendar.php">
+                <label for="name">Empresa:</label>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="function">Função:</label>
+                <input type="text" id="function" name="function" required><br><br>
+
+                <label for="date">Data da Entrevista:</label>
+                <input type="date" id="date" name="date" required><br><br>
+
+                <label for="time">Horário da Entrevista:</label>
+                <input type="time" id="time" name="time" required><br><br>
+
+                <button type="submit">Agendar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Overlay para impedir interação enquanto o pop-up está visível -->
+    <div class="overlay" id="overlay"></div>
+
+     <script>
         // Função para abrir a segunda página
         function openFlowPage() {
             document.getElementById('initialPage').style.display = 'none'; // Esconde a primeira página
@@ -512,7 +568,7 @@
 
         // Função para fechar os popups ao clicar fora ou abrir outro
         function closePopup() {
-            document.querySelectorAll('.popup').forEach(function(popup) {
+            document.querySelectorAll('.popup').forEach(function (popup) {
                 popup.classList.remove('active');
             });
             document.querySelector('.overlay').classList.remove('active');
@@ -521,7 +577,7 @@
         // Função para alternar subcírculos, fechando o anterior e abrindo o atual
         function toggleSubCircles(containerId) {
             const currentContainer = document.getElementById(containerId);
-            
+
             // Fecha os outros subcírculos e abre o clicado
             document.querySelectorAll('.sub-circle-container').forEach(container => {
                 if (container !== currentContainer) {
@@ -542,6 +598,28 @@
 
         // Fechar popups ao clicar fora
         document.querySelector('.overlay').addEventListener('click', closePopup);
+
+        // Função para abrir o pop-up de agendamento
+        function openInterviewForm() {
+            // Abre o popup de agendamento
+            document.getElementById('agendar-popup').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        // Fechar o popup de agendamento ao clicar no overlay
+        document.getElementById('overlay').onclick = function () {
+            document.getElementById('agendar-popup').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        };
+
+        // Função que verifica se está na primeira página
+        window.onload = function () {
+            if (window.location.pathname === "/primeira-pagina.html") {
+                // Esconde o botão de agendamento na primeira página
+                document.querySelector('.circle-wrapper').style.display = 'none';
+            }
+        }
+
     </script>
 
 </body>
