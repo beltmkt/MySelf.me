@@ -14,7 +14,7 @@ Este projeto contém meu **currículo online**, onde apresento minhas habilidade
 
 Você pode acessar meu currículo online diretamente pelo seguinte link:  
 [**(www.alissoncorreia34.github.io/MySelf.me/)**] 
-(Se ainda não estiver publicado online, forneça o link para visualização local ou as instruções de instalação).
+
 
 ## Funcionalidades
 
