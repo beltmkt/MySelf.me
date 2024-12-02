@@ -801,30 +801,29 @@
     <div class="overlay" onclick="closePopup()"></div>
 
    
-      <div class="popup" id="agendar-popup">
-            <h2>Agendar Entrevista</h2>
-            <form id="interviewForm" 
-                <label for="name">Empresa:</label>
-                <input type="text" id="name" name="name" required><br><br>
-            
-                <label for="function">Função:</label>
-                <input type="text" id="function" name="function" required><br><br>
-            
-                <label for="description">Descrição da vaga:</label>
-                <input type="text" id="description" name="description" required><br><br>
-            
-                <label for="date">Data da Entrevista:</label>
-                <input type="date" id="date" name="date" required><br><br>
-            
-                <label for="time">Horário da Entrevista:</label>
-                <input type="time" id="time" name="time" required><br><br>
-            
-                <button type="submit">Agendar</button>
-            </form>
-            
-            
-        </div>
-    </div>
+      <!-- Formulário de agendamento -->
+<div class="popup" id="agendar-popup" style="display: none;">
+    <h2>Agendar Entrevista</h2>
+    <form id="interviewForm">
+        <label for="name">Empresa:</label>
+        <input type="text" id="name" name="name" required><br><br>
+    
+        <label for="function">Função:</label>
+        <input type="text" id="function" name="function" required><br><br>
+    
+        <label for="description">Descrição da vaga:</label>
+        <input type="text" id="description" name="description" required><br><br>
+    
+        <label for="date">Data da Entrevista:</label>
+        <input type="date" id="date" name="date" required><br><br>
+    
+        <label for="time">Horário da Entrevista:</label>
+        <input type="time" id="time" name="time" required><br><br>
+    
+        <button type="submit">Agendar</button>
+    </form>
+    <button id="close-popup-btn">Fechar</button>
+</div>
 
     <!-- Overlay para impedir interação enquanto o pop-up está visível -->
     <div class="overlay" id="overlay"></div>
