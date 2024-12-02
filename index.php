@@ -563,6 +563,45 @@
 </head>
 <body>
 
+    <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Pegando os dados do formulário
+            $empresa = isset($_POST['name']) ? $_POST['name'] : '';
+            $funcao = isset($_POST['function']) ? $_POST['function'] : '';
+            $descricao = isset($_POST['description']) ? $_POST['description'] : '';
+            $data = isset($_POST['date']) ? $_POST['date'] : '';
+            $hora = isset($_POST['time']) ? $_POST['time'] : '';
+
+            // Validação simples (se os campos estiverem vazios)
+            if (empty($empresa) || empty($funcao) || empty($descricao) || empty($data) || empty($hora)) {
+                echo "Todos os campos são obrigatórios.";
+                exit;
+            }
+
+            // Montando a mensagem do e-mail
+            $to = "alissoncorreia31@gmail.com";  // E-mail para o qual os dados serão enviados
+            $subject = "Novo Agendamento Recebido";  // Assunto do e-mail
+
+            // Corpo do e-mail com os dados do formulário
+            $message = "Você recebeu um novo agendamento:\n\n";
+            $message .= "Empresa: " . $empresa . "\n";
+            $message .= "Função: " . $funcao . "\n";
+            $message .= "Descrição da vaga: " . $descricao . "\n";
+            $message .= "Data da Entrevista: " . $data . "\n";
+            $message .= "Horário da Entrevista: " . $hora . "\n";
+
+            // Definindo o cabeçalho do e-mail
+            $headers = "From: no-reply@seudominio.com";  // Remetente do e-mail
+
+            // Enviando o e-mail
+            if (mail($to, $subject, $message, $headers)) {
+                echo "Agendamento realizado com sucesso e e-mail enviado!";
+            } else {
+                echo "Falha ao enviar o e-mail.";
+            }
+        }
+?>
+
     
 
     <!-- Primeira página com o círculo central -->
