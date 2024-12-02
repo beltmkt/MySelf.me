@@ -801,13 +801,12 @@
     <div class="overlay" onclick="closePopup()"></div>
 
    
-        div class="popup" id="agendar-popup">
-        <h2>Agendar Entrevista</h2>
-      
-            <form id="interviewForm">
+      <div class="popup" id="agendar-popup">
+            <h2>Agendar Entrevista</h2>
+            <form id="interviewForm" method="POST" action="agendar.php">
                 <label for="name">Empresa:</label>
                 <input type="text" id="name" name="name" required><br><br>
-                            
+            
                 <label for="function">Função:</label>
                 <input type="text" id="function" name="function" required><br><br>
             
@@ -822,7 +821,10 @@
             
                 <button type="submit">Agendar</button>
             </form>
+            
+            
         </div>
+    </div>
 
     <!-- Overlay para impedir interação enquanto o pop-up está visível -->
     <div class="overlay" id="overlay"></div>
