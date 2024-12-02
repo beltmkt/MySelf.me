@@ -807,27 +807,24 @@
     <form id="interviewForm">
         <label for="name">Empresa:</label>
         <input type="text" id="name" name="name" required><br><br>
-    
+
         <label for="function">Função:</label>
         <input type="text" id="function" name="function" required><br><br>
-    
+
         <label for="description">Descrição da vaga:</label>
         <input type="text" id="description" name="description" required><br><br>
-    
+
         <label for="date">Data da Entrevista:</label>
         <input type="date" id="date" name="date" required><br><br>
-    
+
         <label for="time">Horário da Entrevista:</label>
         <input type="time" id="time" name="time" required><br><br>
-    
+
         <button type="submit">Agendar</button>
     </form>
-    <button id="close-popup-btn">Fechar</button>
 </div>
 
-    <!-- Overlay para impedir interação enquanto o pop-up está visível -->
-    <div class="overlay" id="overlay"></div>
-
+<div class="overlay" id="overlay"></div>
     <script>
         // Função para abrir a segunda página
         function openFlowPage() {
@@ -900,45 +897,69 @@
 
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
-    <script>
-        // Inicialize o EmailJS com sua Public Key
-        emailjs.init("i0LW4DMUPr0VEUOcb");
+<script>
+    // Inicialize o EmailJS com sua Public Key
+    emailjs.init("i0LW4DMUPr0VEUOcb"); // Aqui vai sua Public Key, não o nome
 
-        // Quando o formulário for enviado
-        document.getElementById("interviewForm").addEventListener("submit", function (event) {
-            event.preventDefault();  // Evita o envio tradicional do formulário
+    // Quando o formulário for enviado
+    document.getElementById("interviewForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Impede o envio tradicional do formulário
 
-            // Pegue os dados do formulário
-            var empresa = document.getElementById("name").value;
-            var funcao = document.getElementById("function").value;
-            var descricao = document.getElementById("description").value;
-            var data = document.getElementById("date").value;
-            var hora = document.getElementById("time").value;
+        // Pegue os dados do formulário
+        var empresa = document.getElementById("name").value;
+        var funcao = document.getElementById("function").value;
+        var descricao = document.getElementById("description").value;
+        var data = document.getElementById("date").value;
+        var hora = document.getElementById("time").value;
 
-            // Validação simples dos campos
-            if (!empresa || !funcao || !descricao || !data || !hora) {
-                alert("Todos os campos são obrigatórios.");
-                return;
-            }
+        // Validação simples dos campos
+        if (!empresa || !funcao || !descricao || !data || !hora) {
+            alert("Todos os campos são obrigatórios.");
+            return;
+        }
 
-            // Configuração do e-mail
-            var templateParams = {
-                empresa: empresa,
-                funcao: funcao,
-                descricao: descricao,
-                data: data,
-                hora: hora
-            };
+        // Configuração do e-mail com os dados do formulário
+        var templateParams = {
+            empresa: empresa,
+            funcao: funcao,
+            descricao: descricao,
+            data: data,
+            hora: hora
+        };
 
-            // Enviar o e-mail através do EmailJS
-            emailjs.send("service_hg88z2u", "template_4sxld8o", templateParams)
-                .then(function (response) {
-                    alert("Agendamento realizado com sucesso e e-mail enviado!");
-                }, function (error) {
-                    alert("Falha ao enviar o e-mail.");
-                });
+        // Enviar o e-mail através do EmailJS
+        emailjs.send("service_hg88z2u", "template_4sxld8o", templateParams)
+            .then(function (response) {
+                alert("Agendamento realizado com sucesso e e-mail enviado!");
+                // Opcional: fechar o popup após o envio do e-mail
+                document.getElementById('agendar-popup').classList.remove('active');
+                document.getElementById('overlay').classList.remove('active');
+            }, function (error) {
+                alert("Falha ao enviar o e-mail: " + error.text);
+            });
+    });
+
+    // Função para mostrar o popup
+    function showPopup(popupId) {
+        closePopup(); // Fecha qualquer popup ativo
+        document.getElementById(popupId).classList.add('active');
+        document.querySelector('.overlay').classList.add('active');
+    }
+
+    // Função para fechar os popups ao clicar fora ou abrir outro
+    function closePopup() {
+        document.querySelectorAll('.popup').forEach(function (popup) {
+            popup.classList.remove('active');
         });
-    </script>
+        document.querySelector('.overlay').classList.remove('active');
+    }
+
+    // Fechar o popup de agendamento ao clicar no overlay
+    document.getElementById('overlay').onclick = function () {
+        document.getElementById('agendar-popup').classList.remove('active');
+        document.getElementById('overlay').classList.remove('active');
+    };
+</script>
 
 
 </body>
