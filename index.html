@@ -897,8 +897,6 @@
 
     </script>
 
-  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-
 <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
 <script>
@@ -913,12 +911,6 @@
         .addEventListener('submit', function(event) {
             event.preventDefault(); // Impede o envio padrão do formulário
 
-            // Verifique se o botão existe
-            if (!btn) {
-                console.error("Botão não encontrado!");
-                return;
-            }
-
             btn.value = 'Sending...'; // Alterar o texto do botão para "Enviando..."
 
             const serviceID = 'default_service'; // ID do serviço no EmailJS (geralmente o serviço padrão)
@@ -931,7 +923,7 @@
                     btn.value = 'Send Email'; // Restaura o valor do botão
                     alert('Agendamento realizado com sucesso e e-mail enviado!');
                     
-                    // Opcional: Fechar o pop-up após o envio
+                    // Fechar o pop-up após o envio
                     document.getElementById('agendar-popup').classList.remove('active');
                     document.getElementById('overlay').classList.remove('active');
                 })
