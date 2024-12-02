@@ -895,9 +895,9 @@
 
     </script>
 
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+   <script type="module">
+    import emailjs from 'https://cdn.emailjs.com/dist/email.min.js';
 
-<script>
     // Inicialize o EmailJS com sua Public Key
     emailjs.init("i0LW4DMUPr0VEUOcb"); // Aqui vai sua Public Key, não o nome
 
@@ -938,27 +938,6 @@
                 alert("Falha ao enviar o e-mail: " + error.text);
             });
     });
-
-    // Função para mostrar o popup
-    function showPopup(popupId) {
-        closePopup(); // Fecha qualquer popup ativo
-        document.getElementById(popupId).classList.add('active');
-        document.querySelector('.overlay').classList.add('active');
-    }
-
-    // Função para fechar os popups ao clicar fora ou abrir outro
-    function closePopup() {
-        document.querySelectorAll('.popup').forEach(function (popup) {
-            popup.classList.remove('active');
-        });
-        document.querySelector('.overlay').classList.remove('active');
-    }
-
-    // Fechar o popup de agendamento ao clicar no overlay
-    document.getElementById('overlay').onclick = function () {
-        document.getElementById('agendar-popup').classList.remove('active');
-        document.getElementById('overlay').classList.remove('active');
-    };
 </script>
 
 
