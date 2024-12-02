@@ -801,28 +801,28 @@
     <div class="overlay" onclick="closePopup()"></div>
 
    
-        <div class="popup" id="agendar-popup">
-            <h2>Agendar Entrevista</h2>
-            <form id="interviewForm" method="POST" action="agendar.php">
+        div class="popup" id="agendar-popup">
+        <h2>Agendar Entrevista</h2>
+      
+            <form id="interviewForm">
                 <label for="name">Empresa:</label>
                 <input type="text" id="name" name="name" required><br><br>
-
+                            
                 <label for="function">Função:</label>
                 <input type="text" id="function" name="function" required><br><br>
-
+            
                 <label for="description">Descrição da vaga:</label>
                 <input type="text" id="description" name="description" required><br><br>
-
+            
                 <label for="date">Data da Entrevista:</label>
                 <input type="date" id="date" name="date" required><br><br>
-
+            
                 <label for="time">Horário da Entrevista:</label>
                 <input type="time" id="time" name="time" required><br><br>
-
+            
                 <button type="submit">Agendar</button>
             </form>
         </div>
-    </div>
 
     <!-- Overlay para impedir interação enquanto o pop-up está visível -->
     <div class="overlay" id="overlay"></div>
@@ -896,6 +896,49 @@
         }
 
     </script>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <script>
+        // Inicialize o EmailJS com seu User ID
+        emailjs.init("YOUR_USER_ID");
+
+        // Quando o formulário for enviado
+        document.getElementById("agendamentoForm").addEventListener("submit", function (event) {
+            event.preventDefault();  // Evita o envio tradicional do formulário
+
+            // Pegue os dados do formulário
+            var empresa = document.getElementById("name").value;
+            var funcao = document.getElementById("function").value;
+            var descricao = document.getElementById("description").value;
+            var data = document.getElementById("date").value;
+            var hora = document.getElementById("time").value;
+
+            // Validação simples dos campos
+            if (!empresa || !funcao || !descricao || !data || !hora) {
+                alert("Todos os campos são obrigatórios.");
+                return;
+            }
+
+            // Configuração do e-mail
+            var templateParams = {
+                empresa: empresa,
+                funcao: funcao,
+                descricao: descricao,
+                data: data,
+                hora: hora
+            };
+
+            // Enviar o e-mail através do EmailJS
+            emailjs.send("service_hg88z2u", "template_4sxld8o", templateParams)
+                .then(function (response) {
+                    alert("Agendamento realizado com sucesso e e-mail enviado!");
+                }, function (error) {
+                    alert("Falha ao enviar o e-mail.");
+                });
+        });
+    </script>
+
 
 </body>
 </html>
