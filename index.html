@@ -900,8 +900,8 @@
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
 <script>
-    // Inicialize o EmailJS com seu User ID (alterar 'YOUR_USER_ID' pelo seu User ID real)
-    emailjs.init('i0LW4DMUPr0VEUOcb');  // Altere 'YOUR_USER_ID' pelo seu User ID do EmailJS
+    // Inicialize o EmailJS com seu User ID
+    emailjs.init('i0LW4DMUPr0VEUOcb');  // Substitua 'i0LW4DMUPr0VEUOcb' pelo seu User ID real do EmailJS
 
     // Captura o botão de envio
     const btn = document.getElementById('button');
@@ -911,26 +911,36 @@
         .addEventListener('submit', function(event) {
             event.preventDefault(); // Impede o envio padrão do formulário
 
+            // Verifique se o botão existe
+            if (!btn) {
+                console.error("Botão não encontrado!");
+                return;
+            }
+
             btn.value = 'Sending...'; // Alterar o texto do botão para "Enviando..."
 
-            const serviceID = 'default_service'; // ID do serviço no EmailJS
-            const templateID = 'template_4sxld8o'; // ID do template no EmailJS
+            const serviceID = 'default_service'; // ID do serviço no EmailJS (geralmente o serviço padrão)
+            const templateID = 'template_4sxld8o'; // ID do template no EmailJS (substitua com o ID correto)
 
             // Envia o formulário com o EmailJS
-            emailjs.sendForm(service_hg88z2u, template_4sxld8o, this)
-                .then(() => {
+            emailjs.sendForm(serviceID, templateID, this)
+                .then((response) => {
+                    console.log("Resposta do EmailJS:", response);
                     btn.value = 'Send Email'; // Restaura o valor do botão
                     alert('Agendamento realizado com sucesso e e-mail enviado!');
                     
                     // Opcional: Fechar o pop-up após o envio
                     document.getElementById('agendar-popup').classList.remove('active');
                     document.getElementById('overlay').classList.remove('active');
-                }, (err) => {
+                })
+                .catch((err) => {
+                    console.error('Erro ao enviar o e-mail:', err);
                     btn.value = 'Send Email'; // Restaura o valor do botão em caso de erro
                     alert('Falha ao enviar o e-mail: ' + JSON.stringify(err));
                 });
         });
 </script>
+
 
 </body>
 </html>
