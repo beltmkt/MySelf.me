@@ -804,7 +804,7 @@
       <!-- Formulário de agendamento -->
 <div class="popup" id="agendar-popup">
     <h2>Agendar Entrevista</h2>
-    <form id="interviewForm">
+    <form id="form">
         <label for="name">Empresa:</label>
         <input type="text" id="name" name="name" required><br><br>
 
@@ -820,11 +820,13 @@
         <label for="time">Horário da Entrevista:</label>
         <input type="time" id="time" name="time" required><br><br>
 
-        <button type="submit">Agendar</button>
+        <button type="submit" id="button">Enviar E-mail</button>
     </form>
 </div>
 
+<!-- Overlay -->
 <div class="overlay" id="overlay"></div>
+
     <script>
         // Função para abrir a segunda página
         function openFlowPage() {
@@ -895,53 +897,40 @@
 
     </script>
 
-   <script type="module">
-     import emailjs from 'https://cdn.emailjs.com/dist/email.min.js';
-   </script>   
-    
-    <script>
-    // Inicialize o EmailJS com sua Public Key
-    emailjs.init("i0LW4DMUPr0VEUOcb"); // Aqui vai sua Public Key, não o nome
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
-    // Quando o formulário for enviado
-    document.getElementById("interviewForm").addEventListener("submit", function (event) {
-        event.preventDefault(); // Impede o envio tradicional do formulário
+<script>
+    // Inicialize o EmailJS com seu User ID (alterar 'YOUR_USER_ID' pelo seu User ID real)
+    emailjs.init('i0LW4DMUPr0VEUOcb');  // Altere 'YOUR_USER_ID' pelo seu User ID do EmailJS
 
-        // Pegue os dados do formulário
-        var empresa = document.getElementById("name").value;
-        var funcao = document.getElementById("function").value;
-        var descricao = document.getElementById("description").value;
-        var data = document.getElementById("date").value;
-        var hora = document.getElementById("time").value;
+    // Captura o botão de envio
+    const btn = document.getElementById('button');
 
-        // Validação simples dos campos
-        if (!empresa || !funcao || !descricao || !data || !hora) {
-            alert("Todos os campos são obrigatórios.");
-            return;
-        }
+    // Adiciona o evento de submit ao formulário
+    document.getElementById('form')
+        .addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
 
-        // Configuração do e-mail com os dados do formulário
-        var templateParams = {
-            empresa: empresa,
-            funcao: funcao,
-            descricao: descricao,
-            data: data,
-            hora: hora
-        };
+            btn.value = 'Sending...'; // Alterar o texto do botão para "Enviando..."
 
-        // Enviar o e-mail através do EmailJS
-        emailjs.send("service_hg88z2u", "template_4sxld8o", templateParams)
-            .then(function (response) {
-                alert("Agendamento realizado com sucesso e e-mail enviado!");
-                // Opcional: fechar o popup após o envio do e-mail
-                document.getElementById('agendar-popup').classList.remove('active');
-                document.getElementById('overlay').classList.remove('active');
-            }, function (error) {
-                alert("Falha ao enviar o e-mail: " + error.text);
-            });
-    });
+            const serviceID = 'default_service'; // ID do serviço no EmailJS
+            const templateID = 'template_4sxld8o'; // ID do template no EmailJS
+
+            // Envia o formulário com o EmailJS
+            emailjs.sendForm(service_hg88z2u, template_4sxld8o, this)
+                .then(() => {
+                    btn.value = 'Send Email'; // Restaura o valor do botão
+                    alert('Agendamento realizado com sucesso e e-mail enviado!');
+                    
+                    // Opcional: Fechar o pop-up após o envio
+                    document.getElementById('agendar-popup').classList.remove('active');
+                    document.getElementById('overlay').classList.remove('active');
+                }, (err) => {
+                    btn.value = 'Send Email'; // Restaura o valor do botão em caso de erro
+                    alert('Falha ao enviar o e-mail: ' + JSON.stringify(err));
+                });
+        });
 </script>
-
 
 </body>
 </html>
