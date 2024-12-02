@@ -820,7 +820,8 @@
         <label for="time">Horário da Entrevista:</label>
         <input type="time" id="time" name="time" required><br><br>
 
-        <button type="submit" id="button">Enviar E-mail</button>
+       <button type="submit" id="button">Enviar</button>
+
     </form>
 </div>
 
@@ -911,16 +912,34 @@
         .addEventListener('submit', function(event) {
             event.preventDefault(); // Impede o envio padrão do formulário
 
-            btn.value = 'Sending...'; // Alterar o texto do botão para "Enviando..."
+            btn.disabled = true;  // Desabilita o botão enquanto o e-mail está sendo enviado
+            btn.value = 'Enviando...'; // Alterar o texto do botão para "Enviando..."
+
+            // Captura os dados do formulário
+            const empresa = document.getElementById('name').value;
+            const funcao = document.getElementById('function').value;
+            const descricao = document.getElementById('description').value;
+            const data = document.getElementById('date').value;
+            const hora = document.getElementById('time').value;
+
+            // Parâmetros do template
+            const templateParams = {
+                empresa: empresa,
+                funcao: funcao,
+                descricao: descricao,
+                data: data,
+                hora: hora
+            };
 
             const serviceID = 'default_service'; // ID do serviço no EmailJS (geralmente o serviço padrão)
             const templateID = 'template_4sxld8o'; // ID do template no EmailJS (substitua com o ID correto)
 
             // Envia o formulário com o EmailJS
-            emailjs.sendForm(serviceID, templateID, this)
+            emailjs.send(serviceID, templateID, templateParams)
                 .then((response) => {
                     console.log("Resposta do EmailJS:", response);
-                    btn.value = 'Send Email'; // Restaura o valor do botão
+                    btn.value = 'Enviar';  // Restaura o valor do botão
+                    btn.disabled = false;  // Habilita novamente o botão
                     alert('Agendamento realizado com sucesso e e-mail enviado!');
                     
                     // Fechar o pop-up após o envio
@@ -929,11 +948,13 @@
                 })
                 .catch((err) => {
                     console.error('Erro ao enviar o e-mail:', err);
-                    btn.value = 'Send Email'; // Restaura o valor do botão em caso de erro
+                    btn.value = 'Enviar';  // Restaura o valor do botão em caso de erro
+                    btn.disabled = false;  // Habilita novamente o botão
                     alert('Falha ao enviar o e-mail: ' + JSON.stringify(err));
                 });
         });
 </script>
+
 
 
 </body>
