@@ -998,9 +998,14 @@
         });
 </script>
 
-
-
-
+<script>
+    // Verifica a URL da página atual
+    window.onload = function() {
+        if (window.location.pathname === '/pagina2.html') {
+            document.getElementById('whatsapp-button').style.display = 'block'; // Exibe o botão na segunda página
+        }
+    }
+</script>
 
 </body>
 </html>
