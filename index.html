@@ -994,17 +994,14 @@
                     console.error('Erro ao enviar o e-mail:', err);
                     btn.value = 'Send Email'; // Restaura o valor do botão em caso de erro
                     alert('Falha ao enviar o e-mail: ' + JSON.stringify(err));
+                })
+
+            // Verifica a URL da página atual e exibe o botão apenas na segunda página
+                window.onload = function() {
+                    if (window.location.href.includes("pagina2.html")) {  // Verifica se a URL contém 'pagina2.html'
+                    document.getElementById('whatsapp-button').style.display = 'block';  // Exibe o botão
                 });
         });
-</script>
-
-<script>
-    // Verifica a URL da página atual e exibe o botão apenas na segunda página
-    window.onload = function() {
-        if (window.location.href.includes("pagina2.html")) {  // Verifica se a URL contém 'pagina2.html'
-            document.getElementById('whatsapp-button').style.display = 'block';  // Exibe o botão
-        }
-    }
 </script>
 
 
