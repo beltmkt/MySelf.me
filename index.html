@@ -393,21 +393,24 @@
             display: flex;
             flex-direction: column;
             max-height: 400px; /* Altura máxima do formulário */
-            overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+            width: 500px; /* Largura do formulário (ajuste conforme necessário) */
+            overflow-y: auto; /* Mantém a barra de rolagem vertical */
+            overflow-x: hidden; /* Remove a barra de rolagem horizontal */
         }
-
+        
         .popup label {
             margin-block-end: 5px;
             font-size: 14px;
         }
-
+        
         .popup input {
             padding: 8px;
             margin-block-end: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            width: 100%; /* Faz os campos de input ocuparem toda a largura disponível do formulário */
         }
-
+        
         .popup button[type="submit"] {
             background-color: #00d2ff; /* Azul suave e futurista */
             color: white; /* Cor do texto */
@@ -418,18 +421,14 @@
             border-radius: 5px; /* Bordas arredondadas */
             cursor: pointer; /* Cursor de mãozinha */
             transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
-        }        
-                
-        /* Cor de fundo ao passar o mouse */
-       .popup button[type="submit"]:hover {
+        }
+        
+        .popup button[type="submit"]:hover {
             background: linear-gradient(45deg, #00d2ff, #0077FF); /* Gradiente azul futurista */
             box-shadow: 0 0 10px #00d2ff, 0 0 20px #0077FF; /* Efeito de brilho */
         }
 
-            /* Cor de fundo ao passar o mouse */
-        }
-
-
+     
         /* Imagens nos subcírculos */
         .sub-circle img {
             inline-size: 80%;
@@ -536,6 +535,29 @@
         .overlay.active {
             display: block;
         }
+
+        /* Estilo para o botão do WhatsApp */
+            .whatsapp-button {
+                position: fixed; /* Fixa o botão na tela */
+                bottom: 20px; /* Distância do fundo da tela */
+                right: 20px; /* Distância da lateral direita */
+                background-color: #25D366; /* Cor de fundo do WhatsApp */
+                border-radius: 50%; /* Torna o botão redondo */
+                padding: 10px; /* Espaçamento interno */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
+                transition: transform 0.3s ease; /* Animação suave */
+            }
+            
+            .whatsapp-button:hover {
+                transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
+            }
+            
+            /* Tamanho do ícone */
+            .whatsapp-icon {
+                width: 50px; /* Tamanho do ícone */
+                height: 50px; /* Tamanho do ícone */
+            }
+
 
         a {
             color: blue;
@@ -771,6 +793,14 @@
 
         
     </div>
+
+    <div>
+    <!-- Link para o WhatsApp com ícone oficial -->
+        <a href="https://wa.me/5511992001638" class="whatsapp-button" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon" />
+        </a>
+    </div>
+
 
    <div class="popup" id="bd-popup">
     <h2>Projeto de Banco de Dados</h2>
