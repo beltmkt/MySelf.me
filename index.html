@@ -393,40 +393,43 @@
             display: flex;
             flex-direction: column;
             max-height: 400px; /* Altura máxima do formulário */
-            width: 500px; /* Largura do formulário (ajuste conforme necessário) */
+            width: 80%; /* Largura do formulário (ajuste conforme necessário) */
+            max-width: 800px; /* Define um tamanho máximo de largura para o formulário */
+            margin: 0 auto; /* Centraliza o formulário horizontalmente */
             overflow-y: auto; /* Mantém a barra de rolagem vertical */
             overflow-x: hidden; /* Remove a barra de rolagem horizontal */
-        }
-        
-        .popup label {
-            margin-block-end: 5px;
-            font-size: 14px;
-        }
-        
-        .popup input {
-            padding: 8px;
-            margin-block-end: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%; /* Faz os campos de input ocuparem toda a largura disponível do formulário */
-        }
-        
-        .popup button[type="submit"] {
-            background-color: #00d2ff; /* Azul suave e futurista */
-            color: white; /* Cor do texto */
-            border: none; /* Sem borda */
-            padding: 10px 20px; /* Espaçamento interno */
-            text-align: center; /* Alinhamento do texto */
-            font-size: 16px; /* Tamanho da fonte */
-            border-radius: 5px; /* Bordas arredondadas */
-            cursor: pointer; /* Cursor de mãozinha */
-            transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
-        }
-        
-        .popup button[type="submit"]:hover {
-            background: linear-gradient(45deg, #00d2ff, #0077FF); /* Gradiente azul futurista */
-            box-shadow: 0 0 10px #00d2ff, 0 0 20px #0077FF; /* Efeito de brilho */
-        }
+            }
+            
+            .popup label {
+                margin-block-end: 5px;
+                font-size: 14px;
+            }
+            
+            .popup input {
+                padding: 8px;
+                margin-block-end: 8px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                width: 100%; /* Faz os campos de input ocuparem toda a largura disponível do formulário */
+            }
+            
+            .popup button[type="submit"] {
+                background-color: #00d2ff; /* Azul suave e futurista */
+                color: white; /* Cor do texto */
+                border: none; /* Sem borda */
+                padding: 10px 20px; /* Espaçamento interno */
+                text-align: center; /* Alinhamento do texto */
+                font-size: 16px; /* Tamanho da fonte */
+                border-radius: 5px; /* Bordas arredondadas */
+                cursor: pointer; /* Cursor de mãozinha */
+                transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
+            }
+            
+            .popup button[type="submit"]:hover {
+                background: linear-gradient(45deg, #00d2ff, #0077FF); /* Gradiente azul futurista */
+                box-shadow: 0 0 10px #00d2ff, 0 0 20px #0077FF; /* Efeito de brilho */
+            }
+
 
      
         /* Imagens nos subcírculos */
