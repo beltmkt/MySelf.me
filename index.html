@@ -389,15 +389,17 @@
         }
 
         /* Estilos do formulário dentro do pop-up */
-        .popup form {
-            display: flex;
-            flex-direction: column;
-            max-height: 400px; /* Altura máxima do formulário */
-            width: 80%; /* Largura do formulário (ajuste conforme necessário) */
-            max-width: 800px; /* Define um tamanho máximo de largura para o formulário */
-            margin: 0 auto; /* Centraliza o formulário horizontalmente */
-            overflow-y: auto; /* Mantém a barra de rolagem vertical */
-            overflow-x: hidden; /* Remove a barra de rolagem horizontal */
+            .popup form {
+                display: flex;
+                flex-direction: column;
+                max-height: 400px; /* Define a altura máxima do formulário */
+                overflow-y: auto; /* Permite a rolagem vertical, mas sem mostrar a barra de rolagem */
+                -ms-overflow-style: none;  /* Para Internet Explorer 10+ */
+                scrollbar-width: none; /* Para Firefox */
+            }
+            
+            .popup form::-webkit-scrollbar {
+                display: none; /* Esconde a barra de rolagem no Chrome, Safari e Edge */
             }
             
             .popup label {
@@ -410,7 +412,6 @@
                 margin-block-end: 8px;
                 border: 1px solid #ccc;
                 border-radius: 5px;
-                width: 100%; /* Faz os campos de input ocuparem toda a largura disponível do formulário */
             }
             
             .popup button[type="submit"] {
