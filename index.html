@@ -540,26 +540,27 @@
         }
 
         /* Estilo para o botão do WhatsApp */
-            .whatsapp-button {
-                position: fixed; /* Fixa o botão na tela */
-                bottom: 20px; /* Distância do fundo da tela */
-                right: 20px; /* Distância da lateral direita */
-                background-color: #25D366; /* Cor de fundo do WhatsApp */
-                border-radius: 50%; /* Torna o botão redondo */
-                padding: 10px; /* Espaçamento interno */
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
-                transition: transform 0.3s ease; /* Animação suave */
+            #whatsapp-button {
+                display: none; /* Esconde o botão por padrão */
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #25D366;
+                border-radius: 50%;
+                padding: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s ease;
             }
             
-            .whatsapp-button:hover {
-                transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
+            #whatsapp-button:hover {
+                transform: scale(1.1);
             }
             
-            /* Tamanho do ícone */
             .whatsapp-icon {
-                width: 50px; /* Tamanho do ícone */
-                height: 50px; /* Tamanho do ícone */
+                width: 50px;
+                height: 50px;
             }
+
 
 
         a {
@@ -799,11 +800,11 @@
 
     <div>
     <!-- Link para o WhatsApp com ícone oficial -->
-        <a href="https://wa.me/5511992001638" class="whatsapp-button" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon" />
-        </a>
-    </div>
+    <a href="https://wa.me/5511992001638" id="whatsapp-button" target="_blank">
+           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon" />
+    </a>  
 
+    </div>
 
    <div class="popup" id="bd-popup">
     <h2>Projeto de Banco de Dados</h2>
@@ -850,9 +851,9 @@
 
    
       <!-- Formulário de agendamento -->
-<div class="popup" id="agendar-popup">
-    <h2>Agendar Entrevista</h2>
-    <form id="form">
+    <div class="popup" id="agendar-popup">
+        <h2>Agendar Entrevista</h2>
+        <form id="form">
 
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         
