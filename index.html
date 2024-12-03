@@ -427,8 +427,11 @@
             /* Transição suave ao passar o mouse */
         }
 
-        .popup button[type="submit"]:hover {
-            background-color: #45a049;
+       .popup button[type="submit"]:hover {
+            background: linear-gradient(45deg, #00d2ff, #0077FF); /* Gradiente azul futurista */
+            box-shadow: 0 0 10px #00d2ff, 0 0 20px #0077FF; /* Efeito de brilho */
+}
+
             /* Cor de fundo ao passar o mouse */
         }
 
@@ -808,7 +811,7 @@
         <label for="name">Empresa:</label>
         <input type="text" id="name" name="name" required><br><br>
          
-        <label for="name">Contatos:</label>
+        <label for="name">Contatos: (E-mail/Telefone)</label>
         <input type="text" id="contact" name="contact" required><br><br>
 
         <label for="function">Função:</label>
