@@ -820,6 +820,9 @@
 <div class="popup" id="agendar-popup">
     <h2>Agendar Entrevista</h2>
     <form id="form">
+
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        
         <label for="name">Empresa:</label>
         <input type="text" id="name" name="name" required><br><br>
          
@@ -915,9 +918,12 @@
         }
 
     </script>
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
-<script>
+    <script>
     // Inicialize o EmailJS com seu User ID
     emailjs.init('i0LW4DMUPr0VEUOcb');  // Substitua 'i0LW4DMUPr0VEUOcb' pelo seu User ID real do EmailJS
 
