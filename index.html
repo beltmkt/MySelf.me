@@ -948,14 +948,16 @@
         document.getElementById('overlay').onclick = function () {
             document.getElementById('agendar-popup').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
-        };
+        });
+
+        }
 
         // Função que verifica se está na primeira página
         window.onload = function () {
             if (window.location.pathname === "/primeira-pagina.html") {
                 // Esconde o botão de agendamento na primeira página
                 document.querySelector('.circle-wrapper').style.display = 'none';
-            }
+             })
         }
 
     </script>    
